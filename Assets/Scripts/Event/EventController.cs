@@ -30,8 +30,23 @@ public class EventController : MonoBehaviour
 			return;
 		}
 
-		int index = Random.Range(0, allEvents.Length);
-		EventData selected = allEvents[index];
+		int eventPickMax = allEvents.Length;
+		for (int i = 0; i < allEvents.Length; i++)
+		{
+            eventPickMax += allEvents[i].chanceMult;
+        }
+        int eventPick = Random.Range(0, eventPickMax);
+		int index = 0;
+        for (int i = 0; i < allEvents.Length; i++)
+        {
+            eventPick -= allEvents[i].chanceMult;
+			if (eventPick < 0)
+			{
+				index = i;
+                break;
+			}
+        }
+        EventData selected = allEvents[index];
 
 		eventManager.ShowEvent(selected);
 	}
