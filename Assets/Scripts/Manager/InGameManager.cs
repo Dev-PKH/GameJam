@@ -11,6 +11,7 @@ public class InGameManager : MonoBehaviour
 {
     public static InGameManager Instance { get; private set; }
 
+    // 행성 인덱스를 담은 변수가 필요함. (배열 bool or list contain)
 
     // 행성 정보
     public GameStatus status;
@@ -44,22 +45,35 @@ public class InGameManager : MonoBehaviour
 
     public void EnterSelectePlanet() // 행성 선택 진입
     {
-        stepDistance = Mathf.RoundToInt(4 * GetDistance() / 6 + 2.4f * Mathf.Sqrt(planetCount));
+        Debug.Log("주사위 총합 : " + GetDistance());
+
+        int value = 0, min = 0;
+        (value, min) = GetDistance();
+        stepDistance = Mathf.RoundToInt(4f * value / 6f + 2.4f * Mathf.Sqrt(planetCount)) - min;
+
+        Debug.Log("계산 값 : " + stepDistance);
 
         int cnt = Random.Range(2, 4); // 2개이상 3개 이하 생성
 
         spawnPlanet.SpawnPlanets(cnt, stepDistance, stepSize);
     }
 
-    public int GetDistance()
+    /// <summary>
+    /// 도합과 최소값 반환
+    /// </summary>
+    /// <returns></returns>
+    public (int,int) GetDistance()
     {
         int sumDistance = 0; // 주사위의 합
+        int min = int.MaxValue;
         foreach(var dice in dices)
         {
-            sumDistance += dice.GetDistance();
+            int num = dice.GetDistance();
+            if (min > num) min = num;
+            sumDistance += num;
         }
 
-        return sumDistance;
+        return (sumDistance, min);
     }
 
     public void EnterMovePlanet() // 행성 이동 진입

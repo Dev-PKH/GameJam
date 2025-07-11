@@ -90,6 +90,7 @@ public class Dice : MonoBehaviour
         Debug.Log(status + "다이스 선택");
     }
 
+    // 주사위 합 반환
     public int GetDistance()
     {
         int value = 0;

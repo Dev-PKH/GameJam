@@ -12,6 +12,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dibetund
       objectReference: {fileID: 0}
+    - target: {fileID: 4632888672850576470, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
+      propertyPath: m_Size.x
+      value: 2.9296875
+      objectReference: {fileID: 0}
+    - target: {fileID: 4632888672850576470, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
+      propertyPath: m_Size.y
+      value: 2.9296875
+      objectReference: {fileID: 0}
+    - target: {fileID: 4632888672850576470, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a8f42bbea45f59e4091380ce8b9631df, type: 3}
+    - target: {fileID: 4632888672850576470, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5095082279785878095, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -72,8 +88,17 @@ PrefabInstance:
       propertyPath: planetStatus
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8407624045958023383, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
+      propertyPath: spriteTransform
+      value: 
+      objectReference: {fileID: 4916052087526009280}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
+--- !u!4 &4916052087526009280 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7088043056628823536, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
+  m_PrefabInstance: {fileID: 2766506258541763632}
+  m_PrefabAsset: {fileID: 0}

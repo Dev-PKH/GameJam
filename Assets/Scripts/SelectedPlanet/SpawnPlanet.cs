@@ -9,6 +9,8 @@ public class SpawnPlanet : MonoBehaviour
     public Planet[] planetPrefabs;
     [SerializeField] private SplineContainer splineContainer;
 
+    public Transform spawnPos;
+
     public float moveSpeed; // 이동속도;
 
     void Start()
@@ -29,31 +31,42 @@ public class SpawnPlanet : MonoBehaviour
 
     public IEnumerator ISpanwPlanets(int cnt, float distance, float steps)
     {
+        // 1. 중복 없는 랜덤 인덱스 리스트 생성
+        List<int> prefabIndices = new List<int>();
+        while (prefabIndices.Count < cnt)
+        {
+            int rand = Random.Range(0, planetPrefabs.Length);
+            if (!prefabIndices.Contains(rand))
+            {
+                prefabIndices.Add(rand);
+            }
+        }
+
         for (int i = 0; i < cnt; i++)
         {
-            Planet planet = Instantiate(planetPrefabs[i], transform.position, transform.rotation);
+            Planet planet = Instantiate(planetPrefabs[prefabIndices[i]], spawnPos.position, spawnPos.rotation);
             Spline spline = splineContainer.Spline;
             Vector3 splinePos;
 
             if (i == 0)
             {
-                planet.distance = Mathf.RoundToInt(distance);
-                planet.transform.DOScale(Vector3.one + new Vector3(0.2f, 0.2f, 0.2f), 0.25f);
+                planet.SetDistance(Mathf.RoundToInt(distance));
+                planet.SetSpriteSize(Vector3.one + new Vector3(0.4f, 0.4f, 0.4f));
                 splinePos = spline.EvaluatePosition(0);
                 planet.transform.DOMove(splinePos, 0.25f);
             }
             else
             {
-                planet.distance = Mathf.RoundToInt(distance * steps * i);
-                if (cnt != i - 1)
+                planet.SetDistance(Mathf.RoundToInt(distance + distance * steps * i));
+                if (cnt == i + 1)
                 {
-                    planet.transform.DOScale(Vector3.one + new Vector3(0.1f, 0.1f, 0.1f), 0.25f);
-                    splinePos = spline.EvaluatePosition(0.5f);
+                    splinePos = spline.EvaluatePosition(1);
                     planet.transform.DOMove(splinePos, 0.25f);
                 }
                 else
                 {
-                    splinePos = spline.EvaluatePosition(1);
+                    planet.SetSpriteSize(Vector3.one + new Vector3(0.2f, 0.2f, 0.2f));
+                    splinePos = spline.EvaluatePosition(0.5f);
                     planet.transform.DOMove(splinePos, 0.25f);
                 }
             }
