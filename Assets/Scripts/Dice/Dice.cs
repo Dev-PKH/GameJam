@@ -19,7 +19,8 @@ public class Dice : MonoBehaviour
     public DiceStatus status;
     public SpriteRenderer[] diceEyes;
     public int upgradeIndex = 0; // 강화 인덱스
- 
+    public int currentEyes = 0; // 현재 주사위 눈의 개수
+
     public const float Offest = 2f;
     public const float maxLine = -10f;
 
