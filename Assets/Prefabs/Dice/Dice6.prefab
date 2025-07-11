@@ -517,7 +517,19 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -5169007671341932395, guid: 5014ae3f740a95348ba089c70937f8e5, type: 3}
+      propertyPath: currentEyes
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -5169007671341932395, guid: 5014ae3f740a95348ba089c70937f8e5, type: 3}
       propertyPath: diceEyes.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -5169007671341932395, guid: 5014ae3f740a95348ba089c70937f8e5, type: 3}
+      propertyPath: diceColor.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -5169007671341932395, guid: 5014ae3f740a95348ba089c70937f8e5, type: 3}
+      propertyPath: eyesStatus.Array.size
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -5169007671341932395, guid: 5014ae3f740a95348ba089c70937f8e5, type: 3}

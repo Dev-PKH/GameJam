@@ -14,10 +14,32 @@ public enum DiceStatus
     None
 }
 
+public enum EyesStatus
+{ 
+    basic,
+    rhombus,
+    triangle,
+    star
+}
+
+public enum DiceColor
+{
+    basic,
+    green,
+    blue,
+    purple,
+    yellow,
+    red
+}
+
+
 public class Dice : MonoBehaviour
 {
     public DiceStatus status;
     public SpriteRenderer[] diceEyes;
+    public EyesStatus[] eyesStatus;
+    public DiceColor[] diceColor;
+
     public int upgradeIndex = 0; // 강화 인덱스
     public int currentEyes = 0; // 현재 주사위 눈의 개수
 
@@ -68,4 +90,17 @@ public class Dice : MonoBehaviour
         Debug.Log(status + "다이스 선택");
     }
 
+    public int GetDistance()
+    {
+        int value = 0;
+        for(int i=0; i<currentEyes; i++)
+        {
+            if (eyesStatus[i] == EyesStatus.basic)
+            {
+                value += (int)diceColor[i] + 1;
+            }
+        }
+
+        return value;
+    }
 }
