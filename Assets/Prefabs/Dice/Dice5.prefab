@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3295031747353235160}
   - component: {fileID: 7733869321000343972}
   m_Layer: 0
-  m_Name: 5-5
+  m_Name: 5-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 1976977597703566140}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.024, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 3724028107430412701}
   - component: {fileID: 5009701163884489092}
   m_Layer: 0
-  m_Name: 5-3
+  m_Name: 5-4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -278,7 +278,7 @@ Transform:
   m_GameObject: {fileID: 3556632556885638312}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.238, y: -0.213, z: 0}
+  m_LocalPosition: {x: -0.238, y: -0.253, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 1789505632392465657}
   - component: {fileID: 6709989203781225069}
   m_Layer: 0
-  m_Name: 5-4
+  m_Name: 5-5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -362,7 +362,7 @@ Transform:
   m_GameObject: {fileID: 6175959340675236292}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.236, y: -0.213, z: 0}
+  m_LocalPosition: {x: 0.238, y: -0.253, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -511,13 +511,13 @@ PrefabInstance:
       addedObject: {fileID: 3455195314982162956}
     - targetCorrespondingSourceObject: {fileID: 1132060482250164747, guid: 5014ae3f740a95348ba089c70937f8e5, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 3295031747353235160}
+    - targetCorrespondingSourceObject: {fileID: 1132060482250164747, guid: 5014ae3f740a95348ba089c70937f8e5, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 3724028107430412701}
     - targetCorrespondingSourceObject: {fileID: 1132060482250164747, guid: 5014ae3f740a95348ba089c70937f8e5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1789505632392465657}
-    - targetCorrespondingSourceObject: {fileID: 1132060482250164747, guid: 5014ae3f740a95348ba089c70937f8e5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3295031747353235160}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5014ae3f740a95348ba089c70937f8e5, type: 3}
 --- !u!4 &1507726010785139128 stripped
