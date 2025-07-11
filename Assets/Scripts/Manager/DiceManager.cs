@@ -9,6 +9,9 @@ public class DiceManager : MonoBehaviour
 
     // Dice
     public Dice[] dices;
+    public GameObject diceSlot;
+    public GameObject diceButton;
+
     public bool isDiceRoll { get; private set; } // 다이스를 진행하는지
     public bool isSlowing { get; private set; } // 다이스가 느려지는지
     public float diceSpeed { get; private set; }
@@ -43,6 +46,16 @@ public class DiceManager : MonoBehaviour
             isSlowing = true;
         }
     }
+
+    /// <summary>
+    /// 다이스 켜기/끄기
+    /// </summary>
+    public void SetDice(bool check)
+    {
+        diceSlot.SetActive(check);
+        diceButton.SetActive(check);
+    }
+
 
     public void RollDice()
     {
@@ -86,7 +99,10 @@ public class DiceManager : MonoBehaviour
             dice.AdjustDice(-selectedDice.transform.position.y);
         }
 
-        selectedDice?.CompleteDice();
+        yield return new WaitForSeconds(1f); // 주사위가 다 돌아갈때까지 대기
+
+        // 움직인 만큼 감소
+        InGameManager.Instance.DiceRoll(selectedDice.CompleteDice());
 
         isDiceRoll = false;
     }

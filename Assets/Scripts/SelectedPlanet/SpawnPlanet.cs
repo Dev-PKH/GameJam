@@ -6,12 +6,14 @@ using UnityEngine.Splines;
 
 public class SpawnPlanet : MonoBehaviour
 {
-    public Planet[] planetPrefabs;
+    //public Planet[] planetPrefabs;
     [SerializeField] private SplineContainer splineContainer;
 
     public Transform spawnPos;
 
     public float moveSpeed; // 이동속도;
+
+    public List<Planet> plants = new List<Planet>();
 
     void Start()
     {
@@ -35,7 +37,7 @@ public class SpawnPlanet : MonoBehaviour
         List<int> prefabIndices = new List<int>();
         while (prefabIndices.Count < cnt)
         {
-            int rand = Random.Range(0, planetPrefabs.Length);
+            int rand = Random.Range(0, InGameManager.Instance.planetPrefabs.Length);
             if (!prefabIndices.Contains(rand))
             {
                 prefabIndices.Add(rand);
@@ -44,7 +46,7 @@ public class SpawnPlanet : MonoBehaviour
 
         for (int i = 0; i < cnt; i++)
         {
-            Planet planet = Instantiate(planetPrefabs[prefabIndices[i]], spawnPos.position, spawnPos.rotation);
+            Planet planet = Instantiate(InGameManager.Instance.planetPrefabs[prefabIndices[i]], spawnPos.position, spawnPos.rotation);
             Spline spline = splineContainer.Spline;
             Vector3 splinePos;
 
@@ -57,7 +59,7 @@ public class SpawnPlanet : MonoBehaviour
             }
             else
             {
-                planet.SetDistance(Mathf.RoundToInt(distance + distance * steps * i));
+                planet.SetDistance(Mathf.RoundToInt(distance + distance * steps * i * (4 - cnt)));
                 if (cnt == i + 1)
                 {
                     splinePos = spline.EvaluatePosition(1);
@@ -71,9 +73,19 @@ public class SpawnPlanet : MonoBehaviour
                 }
             }
 
-           
+            plants.Add(planet);
 
-            yield return new WaitForSeconds(moveSpeed);
+             yield return new WaitForSeconds(moveSpeed);
         }
+    }
+
+    public void ClearList()
+    {
+        foreach(var planet in plants)
+        {
+            Destroy(planet.gameObject);
+        }
+
+        plants.Clear();
     }
 }

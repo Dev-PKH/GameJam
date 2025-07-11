@@ -85,9 +85,10 @@ public class Dice : MonoBehaviour
         transform.DOMove(snappedPos, 1f);
     }
 
-    public void CompleteDice()
+    public int CompleteDice()
     {
         Debug.Log(status + "다이스 선택");
+        return GetDistance();
     }
 
     // 주사위 합 반환

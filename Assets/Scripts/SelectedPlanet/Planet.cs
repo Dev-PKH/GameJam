@@ -35,7 +35,7 @@ public class Planet : MonoBehaviour
 
     private void OnDisable()
     {
-        spriteTransform.DOScale(Vector3.one, 0.1f);
+
     }
 
     void Start()
@@ -62,6 +62,14 @@ public class Planet : MonoBehaviour
 
     public void SetSpriteSize(Vector3 vec)
     {
-        spriteTransform.DOScale(vec, 0.25f);
+        spriteTransform?.DOScale(vec, 0.25f);
+    }
+
+    // 행성이 선택됬을 때
+    public void SetPlanet(Planet planet)
+    {
+        planet.planetStatus = planetStatus;
+        SetDistance(planet.distance);
+        SetSpriteSize(new Vector3(1.2f, 1.2f, 1.2f));
     }
 }
