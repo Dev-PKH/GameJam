@@ -10,14 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f43ca8bf772cd6a4bab456628bfa0106, type: 3}
-  m_Name: Jiyongju
+  m_Name: 08_Engine
   m_EditorClassIdentifier: 
-  title: Jiyongju
-  description: "\uB2F9\uC2E0\uC740 \uC218\uC0C1\uD55C \uB0A8\uC790\uC640 \uB9C8\uC8FC\uD588\uB2E4.\n\uB0A8\uC790\uB294
-    \uAC74\uB4E4\uAC70\uB9AC\uBA70 \uB2F4\uBC30\uB97C \uD53C\uACE0\uC788\uB2E4.\n\uC5B4\uB5BB\uAC8C
-    \uD560\uAC83\uC778\uAC00?"
+  title: "\uC8FC\uC720 \uC911 \uC5D4\uC9C4\uC815\uC9C0"
+  description: "\uC5D4\uC9C4\uC774 \uC624\uB298\uB530\uB77C \uC2DC\uC6D0\uCC2E\uB124\uC694.\n\uC8FC\uC720\uC640
+    \uC6D0\uC0F7\uC774 \uD544\uC694\uD574 \uBCF4\uC785\uB2C8\uB2E4."
   image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   choices:
-  - choiceText: "[\uACF5\uACA9] \uC5BC\uAD74\uC5D0 \uC8FC\uBA39\uC744 \uAF42\uB294\uB2E4."
+  - choiceText: "\uC8FC\uC720 \uD560 \uC2DC\uAC04!"
     actionType: IncreaseHP
     actionParam: 10
+  - choiceText: "\uADF8\uB0E5 \uAC00\uB294\uAC78\uB85C~"
+    actionType: IncreaseHP
+    actionParam: 10
+  chanceMult: 10

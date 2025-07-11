@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f43ca8bf772cd6a4bab456628bfa0106, type: 3}
+  m_Name: 07_Blackhole
+  m_EditorClassIdentifier: 
+  title: "\uB10C \uB0B4\uAC8C \uBE60\uC838"
+  description: "\uBE14\uB799\uD640\uC758 \uC911\uB825\uC774 \uC810\uC810 \uB04C\uC5B4\uB2F9\uAE41\uB2C8\uB2E4.\n\uD0C8\uCD9C\uC744
+    \uD558\uB824\uBA74 \uAF64\uB098 \uC18D\uB3C4\uB97C \uB0B4\uC57C \uACA0\uB124\uC694."
+  image: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  choices:
+  - choiceText: "\uC8FC\uC0AC\uC704 5 \uBBF8\uB9CC"
+    actionType: GainRelic
+    actionParam: "\uC11D\uD6C8\uC758 \uB9C8\uC9C0\uB9C9 \uBA38\uB9AC\uCE74\uB77D"
+  - choiceText: "\uC8FC\uC0AC\uC704 5 \uC774\uC0C1"
+    actionType: DecreaseHP
+    actionParam: 100
+  chanceMult: 10

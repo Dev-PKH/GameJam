@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f43ca8bf772cd6a4bab456628bfa0106, type: 3}
+  m_Name: 05_SpaceRace
+  m_EditorClassIdentifier: 
+  title: "\uC6B0\uC8FC \uCE58\uD0A8\uB808\uC774\uC2A4 "
+  description: "\uB2E4\uB978 \uC6B0\uC8FC\uCC28\uB7C9\uC774 \uB808\uC774\uC2A4 \uACBD\uC8FC\uB97C
+    \uAC78\uC5B4\uC654\uC2B5\uB2C8\uB2E4.\n\uC774\uAE38 \uC218 \uAC19\uC9C0\uB9CC,
+    \uC9C0\uAE08 \uAC08 \uAE38\uC774 \uBC14\uC069\uB2C8\uB2E4!"
+  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  choices:
+  - choiceText: "\uB108 \uB9C8\uCE68 \uC798 \uAC78\uB838\uB2E4."
+    actionType: IncreaseHP
+    actionParam: 10
+  - choiceText: "\uCAC4\uC740 \uAC8C \uC544\uB2C8\uB77C, \uBC14\uBE60\uC11C."
+    actionType: IncreaseHP
+    actionParam: 10
+  chanceMult: 10
