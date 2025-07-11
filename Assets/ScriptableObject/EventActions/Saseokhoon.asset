@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f43ca8bf772cd6a4bab456628bfa0106, type: 3}
+  m_Name: Saseokhoon
+  m_EditorClassIdentifier: 
+  title: Sa
+  description: "\uB2F9\uC2E0\uC740 \uBA38\uB9AC\uAC00 \uBE5B\uB098\uB294 \uB0A8\uC131\uC744
+    \uBCF4\uC558\uB2E4.\n\uB208\uC774 \uBA40 \uAC83\uB9CC \uAC19\uB2E4.\n\uC5B4\uB5BB\uAC8C
+    \uD560 \uAC83\uC778\uAC00?"
+  image: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  choices:
+  - choiceText: "[\uACF5\uACA9] \uC8FD\uD0F1\uC774\uB97C \uAF42\uC544 \uBB34\uCC0C\uB978\uB2E4."
+    actionType: GainRelic
+    actionParam: "\uC11D\uD6C8\uC758 \uB9C8\uC9C0\uB9C9 \uBA38\uB9AC\uCE74\uB77D"
+  - choiceText: "[\uC0C1\uD638\uC791\uC6A9] \uAC19\uC774 \uB6AB\uC5B4\uC838\uB77C
+      \uCCD0\uB2E4\uBCF8\uB2E4."
+    actionType: DecreaseHP
+    actionParam: 100
+  - choiceText: "[\uC544\uC774\uD15C] \uC190\uC804\uB4F1\uC744 \uBE44\uCD98\uB2E4."
+    actionType: DoNothing
+    actionParam: 

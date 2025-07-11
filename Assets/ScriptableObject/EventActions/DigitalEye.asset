@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f43ca8bf772cd6a4bab456628bfa0106, type: 3}
+  m_Name: DigitalEye
+  m_EditorClassIdentifier: 
+  title: DigitalEye
+  description: "\uB2F9\uC2E0\uC740 \uAD11\uD65C\uD55C \uC794\uB514 \uD558\uC5FC\uC5C6\uC774
+    \uACC4\uC18D \uAC78\uC5C8\uB2E4. \n\uADF8\uB54C \uAE30\uC774\uD55C \uAD49\uC74C\uACFC
+    \uD568\uAED8 \uACF5\uAC04\uC774 \uCC22\uC5B4\uC84C\uB2E4. \n\uADF8 \uC0AC\uC774\uB85C
+    \uCEE4\uB2E4\uB780 \uB208\uC774 \uB2F9\uC2E0\uC744 \uCCD0\uB2E4\uBCF4\uAE30 \uC2DC\uC791\uD588\uB2E4.\n\uADF8\uAC83\uC740
+    \uB2F9\uC2E0\uC5D0\uAC8C \uBB34\uC5C7\uC778\uAC00\uB97C \uC804\uD558\uACE0 \uC2F6\uC5B4\uD558\uB294
+    \uAC83 \uAC19\uB2E4."
+  image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  choices:
+  - choiceText: "[\uACF5\uACA9] \uB208\uC54C\uC5D0 \uC8FC\uBA39\uC744 \uAF42\uB294\uB2E4."
+    actionType: DecreaseHP
+    actionParam: 10
+  - choiceText: "[\uC0C1\uD638\uC791\uC6A9 ]\uAC19\uC774 \uB6AB\uC5B4\uC838\uB77C
+      \uCCD0\uB2E4\uBCF8\uB2E4."
+    actionType: GainRelic
+    actionParam: "\uD478\uB978 \uB208"
+  - choiceText: "[\uC544\uC774\uD15C] \uC190\uC804\uB4F1\uC744 \uBE44\uCD98\uB2E4."
+    actionType: DoNothing
+    actionParam: 
+  - choiceText: "[\uBB34\uC2DC] \uBB34\uC2DC\uD558\uACE0 \uC9C0\uB098\uAC04\uB2E4."
+    actionType: Escape
+    actionParam: 
