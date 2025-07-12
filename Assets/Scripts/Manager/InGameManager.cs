@@ -15,7 +15,7 @@ public enum Toys
     fidget, slinky, puzzle, icecream,
     air, roulette, yoyo, Tamagotchi,
     doll, magnet, horse, colourful,
-    tangram, kite, top, scab
+    tangram, kite, top, scab,
 }
 
 public class InGameManager : MonoBehaviour

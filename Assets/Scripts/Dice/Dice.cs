@@ -59,9 +59,18 @@ public class Dice : MonoBehaviour
     {
         if(DiceManager.Instance.isDiceRoll)
         {
-            if (maxLine >= transform.position.y)
+            /*if (maxLine >= transform.position.y)
             {
                 transform.position = new Vector3(0, Offest, 0);
+            }
+            else
+            {
+                transform.position += Vector3.down * DiceManager.Instance.diceSpeed * Time.deltaTime;
+            }*/
+
+            if (transform.position.y <= maxLine)
+            {
+                transform.position = new Vector3(0f, Offest, 0f); // 정확히 리셋
             }
             else
             {
@@ -139,7 +148,7 @@ public class Dice : MonoBehaviour
             }
             else
             {
-                diceEyes[i].sprite = InGameManager.Instance.eyeValues[(int)diceColor[i]];
+                diceEyes[i].sprite = InGameManager.Instance.eyeValues[(int)eyesStatus[i]];
             }
         }
     }
