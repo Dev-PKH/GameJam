@@ -61,7 +61,7 @@ public class ToyManager : MonoBehaviour
         toyPhoto[index].sprite = inGameToySprite[index];
         toyTexts[index].text = toyNames[index];
         toyCount++;
-        if(toyCount == 18)
+        if(toyCount == 16)
         {
             InGameManager.Instance.GameClear();
         }

@@ -282,7 +282,7 @@ public class InGameManager : MonoBehaviour
         
         ToyManager.Instance.GetToy((int)curPlanetStatus);
 
-        if (ToyManager.Instance.toyCount >= 18) yield break;
+        if (ToyManager.Instance.toyCount >= 16) yield break;
 
         FadeScript.Instance.FadeOut(0.5f);
         yield return new WaitForSeconds(3f);
@@ -368,7 +368,7 @@ public class InGameManager : MonoBehaviour
         if(curDistance <= 0)
         {
             completeCount++;
-            moveViewObject.planetList[0].SetDistance(0);
+            moveViewObject.planetList[0]?.SetDistance(0);
             UpdateMoney(completeMoney + curRollCnt);
 
             //StartCoroutine(ChangeSelect(true)); // 상점으로 바꾸자
@@ -376,12 +376,12 @@ public class InGameManager : MonoBehaviour
         }
         else if(curRollCnt == 0)
         {
-            moveViewObject.planetList[0].SetDistance(curDistance);
+            moveViewObject.planetList[0]?.SetDistance(curDistance);
             OutPlanet();
         }
         else
         {
-            moveViewObject.planetList[0].SetDistance(curDistance);
+            moveViewObject.planetList[0]?.SetDistance(curDistance);
             if(!eventDice) CheckEvent();
         }
     }
@@ -547,6 +547,16 @@ public class InGameManager : MonoBehaviour
 
     public void GameClear()
     {
+        StartCoroutine(ChangeGameClear());
+    }
+
+    public IEnumerator ChangeGameClear()
+    {
+        FadeScript.Instance.FadeOut(0.5f);
+
+        yield return new WaitForSeconds(1f);
         LoadSceneManager.Instance.ChangeScene(SceneName.GameClear, SceneName.Ingame);
+
+        FadeScript.Instance.FadeIn(0.5f);
     }
 }
