@@ -6,9 +6,24 @@ using UnityEngine;
 
 public enum Planets
 {
-    Monalpterra,
-    Dibetund,
-    Trigmaer,
+    // Prefix : Mon-    Di-     Tri-    Tet-
+    // Suffix : -terra  -undine -aeris  -pyra
+    Monterra,
+    Monundine,
+    Monaeris,
+    Monpyra,
+    Diterra,
+    Diuundine,
+    Diaeris,
+    Dipyra,
+    Triterra,
+    Triundine,
+    Triaeris,
+    Tripyra,
+    Tetterra,
+    Tetundine,
+    Tetaeris,
+    Tetpyra,
     None
 }
 

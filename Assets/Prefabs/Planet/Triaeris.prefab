@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8122619593449399156
+--- !u!1001 &6344092275136991222
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,20 +10,20 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 386101327952869966, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
       propertyPath: m_Name
-      value: Monalpterra
+      value: Triaeris
       objectReference: {fileID: 0}
     - target: {fileID: 4632888672850576470, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
       propertyPath: m_Size.x
-      value: 2.9296875
+      value: 3.9062498
       objectReference: {fileID: 0}
     - target: {fileID: 4632888672850576470, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
       propertyPath: m_Size.y
-      value: 2.9296875
+      value: 3.9062498
       objectReference: {fileID: 0}
     - target: {fileID: 4632888672850576470, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a56eaa41dd1cf4b45a4105742d01666c, type: 3}
+      objectReference: {fileID: 21300000, guid: 11f760a507f8baa40ae090f18270fcc6, type: 3}
     - target: {fileID: 4632888672850576470, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -68,21 +68,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6086586741982843535, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
-      propertyPath: m_Size.x
-      value: 30.000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 6086586741982843535, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
-      propertyPath: m_Size.y
-      value: 30.000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 6086586741982843535, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: a56eaa41dd1cf4b45a4105742d01666c, type: 3}
-    - target: {fileID: 6086586741982843535, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
+    - target: {fileID: 8407624045958023383, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
+      propertyPath: planetStatus
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
