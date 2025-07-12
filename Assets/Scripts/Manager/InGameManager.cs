@@ -75,6 +75,10 @@ public class InGameManager : MonoBehaviour
     //상점
     public Toys currentToy;
     public bool[] hasToys = new bool[16];
+    public Sprite[] eyeValues;
+    public GetDice[] diceShop;
+    public GetDice selectedShop;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -211,8 +215,14 @@ public class InGameManager : MonoBehaviour
         yield return null;
         status = GameStatus.Select;
 
-        selectView.SetActive(true);
-        StartCoroutine(ChangeSelect());
+        foreach(var shop in diceShop)
+        {
+            shop.gameObject.SetActive(true);
+            shop.SetDice();
+        }
+
+        //selectView.SetActive(true);
+        //StartCoroutine(ChangeSelect());
     }
 
     public IEnumerator ChangeSelect()
