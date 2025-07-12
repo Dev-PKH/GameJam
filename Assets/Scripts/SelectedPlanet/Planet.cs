@@ -39,7 +39,7 @@ public class Planet : MonoBehaviour
 
     public Transform spriteTransform;
     public SpriteRenderer spriteRender;
-
+    public SpriteRenderer toyIcon;
 
     private void Awake()
     {
@@ -76,6 +76,26 @@ public class Planet : MonoBehaviour
     {
         distance = dis;
         tmp.text = distance.ToString();
+    }
+
+    public void CheckPlanet(int index)
+    {
+        toyIcon.gameObject.SetActive(true);
+        toyIcon.sprite = ToyManager.Instance.toys[index];
+
+        if (ToyManager.Instance.checkToy[index])
+        {
+            toyIcon.color = Color.white;
+        }
+        else
+        {
+            toyIcon.color = new Color(0.5f, 0.5f, 0.5f, 1f);
+        }
+    }
+
+    public void OffIcon()
+    {
+        toyIcon.gameObject.SetActive(false);
     }
 
     public void SetSpriteSize(Vector3 vec)
