@@ -62,8 +62,10 @@ public class DiceManager : MonoBehaviour
     public void RollDice()
     {
         if (isDiceRoll) return;
+        if (InGameManager.Instance.isDefence) return;
 
         isDiceRoll = true;
+
         diceSpeed = Random.Range(minSpeed, maxSpeed);
         StartCoroutine(IDiceRoll());
     }

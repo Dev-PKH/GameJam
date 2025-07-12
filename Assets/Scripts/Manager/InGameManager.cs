@@ -62,9 +62,10 @@ public class InGameManager : MonoBehaviour
     public TextMeshPro moneyText;
     public const int completeMoney = 3; // 행성 도달 완료
 
-
     // 주사위 정보
     public Dice[] dices;
+    public bool isDefence = false;
+
 
     // 이벤트
     public EventController eventController; 
@@ -186,6 +187,7 @@ public class InGameManager : MonoBehaviour
         if (status != GameStatus.Move)
         {
             curDistance = planet.distance;
+            isDefence = false;
 
             // 페이드 아웃 하고나서
             StartCoroutine(ChangeMove());
@@ -319,7 +321,9 @@ public class InGameManager : MonoBehaviour
         curRollCnt--;
         rollCountText.text = curRollCnt.ToString();
 
-        if(limitDistance != 0)
+        if (curRollCnt == 0) isDefence = true;
+
+        if (limitDistance != 0)
         {
             Debug.Log("현재 limit와 value값 : " + limitDistance + "/ " + value);
             value = value > limitDistance ? limitDistance : value;
@@ -372,6 +376,7 @@ public class InGameManager : MonoBehaviour
     public void UpdateMoney(int value)
     {
         money += value;
+        if (money < 0) money = 0;
         moneyText.text = money.ToString();
     }
 
@@ -478,6 +483,7 @@ public class InGameManager : MonoBehaviour
     public void BuyNormalShopEyes(int diceIndex)
     {
         money -= GetNoramlEyesValue();
+        if (money < 0) money = 0;
         moneyText.text = money.ToString();
         dices[diceIndex].diceColor[curDiceIndex]++;
         dices[diceIndex].InitEyes();
@@ -496,6 +502,7 @@ public class InGameManager : MonoBehaviour
     public void BuySpecialShopEyes(int diceIndex)
     {
         money -= specialValue;
+        if (money < 0) money = 0; 
         moneyText.text = money.ToString();
         dices[diceIndex].eyesStatus[curDiceIndex] = (EyesStatus)UnityEngine.Random.Range(0, eyeValues.Length);
         dices[diceIndex].InitEyes();
