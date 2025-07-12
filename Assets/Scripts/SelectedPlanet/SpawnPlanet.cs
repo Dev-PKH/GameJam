@@ -46,7 +46,8 @@ public class SpawnPlanet : MonoBehaviour
 
         for (int i = 0; i < cnt; i++)
         {
-            Planet planet = Instantiate(InGameManager.Instance.planetPrefabs[prefabIndices[i]], spawnPos.position, spawnPos.rotation);
+            //Planet planet = Instantiate(InGameManager.Instance.planetPrefabs[prefabIndices[i]], spawnPos.position, spawnPos.rotation);
+            Planet planet = Instantiate(InGameManager.Instance.planetPrefabs[prefabIndices[i]], spawnPos);
             Spline spline = splineContainer.Spline;
             Vector3 splinePos;
 

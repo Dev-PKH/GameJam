@@ -9,6 +9,14 @@ public enum GameStatus
     Select, Move
 }
 
+public enum Toys
+{
+    fidget, slinky, puzzle, icecream,
+    air, roulette, yoyo, Tamagotchi,
+    doll, magnet, horse, colourful,
+    tangram, kite, top, scab
+}
+
 public class InGameManager : MonoBehaviour
 {
     public static InGameManager Instance { get; private set; }
@@ -64,6 +72,9 @@ public class InGameManager : MonoBehaviour
     public int eventDiceNum; // 이벤트 주사위 몇
     public int eventDiceDistance; // 이벤트 주사위 이동거리
 
+    //상점
+    public Toys currentToy;
+    public bool[] hasToys = new bool[16];
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -72,7 +83,8 @@ public class InGameManager : MonoBehaviour
     }
     void Start()
     {
-        EnterSelectPlanet();
+        ExitMovePlanet();
+        selectView.SetActive(true);
         SelectRun();
     }
 
@@ -83,16 +95,14 @@ public class InGameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Select 뷰 진입시 실행
+    /// 움직임 종료
     /// </summary>
-    private void EnterSelectPlanet() // 행성 선택 진입
+    private void ExitMovePlanet() // 행성 선택 진입
     {
         moveView.SetActive(false);
         rollCountText.gameObject.SetActive(false);
         moveViewObject.ClearList();
         DiceManager.Instance.SetDice(false);
-
-        selectView.SetActive(true); // 진입 후 이벤트 뜨는거면 함수를 더 세부분리
     }
 
     /// <summary>
@@ -185,19 +195,27 @@ public class InGameManager : MonoBehaviour
     {
         // 페이드 아웃 진행
 
+        yield return new WaitForSeconds(1f);
+
+        ExitMovePlanet();
+
         if (checkMemorial)
         {
             Debug.Log("행성 도착 완료! 이제 보상 아이템 얻어야함");
         }
+
+
 
         yield return new WaitForSeconds(2f);
 
         yield return null;
         status = GameStatus.Select;
 
+        selectView.SetActive(true);
+        StartCoroutine(ChangeSelect());
     }
 
-    public IEnumerator ChangeSelect(bool checkMemorial)
+    public IEnumerator ChangeSelect()
     {
         // 페이드 아웃 실행
         status = GameStatus.Select;
@@ -220,7 +238,6 @@ public class InGameManager : MonoBehaviour
 
 
         // 이벤트 다 끝나면 실행
-        EnterSelectPlanet();
 
         yield return new WaitForSeconds(1f); // 1초 대기후 선택 행성 로직 실행
 
@@ -261,7 +278,8 @@ public class InGameManager : MonoBehaviour
             moveViewObject.planetList[0].SetDistance(0);
             UpdateMoney(completeMoney + curRollCnt);
 
-            StartCoroutine(ChangeSelect(true)); // 상점으로 바꾸자
+            //StartCoroutine(ChangeSelect(true)); // 상점으로 바꾸자
+            StartCoroutine(ChangeShop(true));
         }
         else if(curRollCnt == 0)
         {

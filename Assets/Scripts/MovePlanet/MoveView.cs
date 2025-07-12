@@ -28,7 +28,8 @@ public class MoveView : MonoBehaviour
 
     public void PlanetSpawn(int distance, int planetIndex, int posIndex)
     {
-        Planet planet = Instantiate(InGameManager.Instance.planetPrefabs[planetIndex], spawnPoint.position, spawnPoint.rotation);
+        //Planet planet = Instantiate(InGameManager.Instance.planetPrefabs[planetIndex], spawnPoint.position, spawnPoint.rotation);
+        Planet planet = Instantiate(InGameManager.Instance.planetPrefabs[planetIndex], spawnPoint);
         planet.SetDistance(distance);
         Spline spline = splineContainer.Spline;
         var midLocal = splineContainer.Spline[posIndex].Position;
