@@ -8,6 +8,7 @@ public enum SceneName
     Core,
     UI,
     Ingame,
+    GameClear,
     None
 }
 

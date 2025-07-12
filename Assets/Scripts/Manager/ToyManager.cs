@@ -14,6 +14,7 @@ public class ToyManager : MonoBehaviour
 
     // Toy
     public bool[] checkToy;
+    public int toyCount = 0; // 현재 나의 장난감 갯수
 
     private void Awake()
     {
@@ -30,6 +31,7 @@ public class ToyManager : MonoBehaviour
             toyPhoto[i].sprite = lockToy;
             checkToy[i] = false;
         }
+        toyCount = 0;
     }
 
     void Start()
@@ -48,11 +50,18 @@ public class ToyManager : MonoBehaviour
         if (checkToy[index]) return;
         checkToy[index] = true;
         toyPhoto[index].sprite = toys[index];
+        toyCount++;
+        if(toyCount == 18)
+        {
+            InGameManager.Instance.GameClear();
+        }
     }
 
     public void LostToy(int index)
     {
+        toyCount--;
         checkToy[index] = false;
         toyPhoto[index].sprite = lockToy;
+        if (toyCount < 0) toyCount = 0;
     }
 }

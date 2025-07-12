@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -256,6 +257,7 @@ public class InGameManager : MonoBehaviour
         Debug.Log("행성 도착 완료! 이제 보상 아이템 얻어야함");
         ToyManager.Instance.GetToy((int)curPlanetStatus);
 
+        if (ToyManager.Instance.toyCount >= 18) yield break;
 
         yield return new WaitForSeconds(2f);
 
@@ -498,5 +500,10 @@ public class InGameManager : MonoBehaviour
     public void ExitShop()
     {
         StartCoroutine(ChangeSelect());
+    }
+
+    public void GameClear()
+    {
+        LoadSceneManager.Instance.ChangeScene(SceneName.GameClear, SceneName.Ingame);
     }
 }

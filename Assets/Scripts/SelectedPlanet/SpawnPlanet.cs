@@ -39,7 +39,11 @@ public class SpawnPlanet : MonoBehaviour
         {
             int rand = Random.Range(0, InGameManager.Instance.planetPrefabs.Length);
             if (rand == (int)InGameManager.Instance.curPlanetStatus) continue;
-            if (!prefabIndices.Contains(rand))
+            if(prefabIndices.Count == 2) 
+            {
+                if (ToyManager.Instance.checkToy[rand]) continue;
+            }
+            else if (!prefabIndices.Contains(rand))
             {
                 prefabIndices.Add(rand);
             }
