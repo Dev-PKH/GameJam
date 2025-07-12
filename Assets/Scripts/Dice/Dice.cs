@@ -114,12 +114,33 @@ public class Dice : MonoBehaviour
     public int GetDistance()
     {
         int value = 0;
-        for(int i=0; i<currentEyes; i++)
+        int doubleMult = 0;
+        for (int i = 0; i < currentEyes; i++)
         {
-            if (eyesStatus[i] == EyesStatus.basic)
+            switch (eyesStatus[i])
             {
-                value += (int)diceColor[i] + 1;
+                case EyesStatus.basic:
+                    value += (int)diceColor[i] + 1;
+                    break;
+                case EyesStatus.rhombus:
+                    InGameManager.Instance.UpdateMoney(1);
+                    break;
+                case EyesStatus.triangle:
+                    if (Random.Range(0, 1) > 0.5)
+                    {
+                        value += 2;
+                    }
+                    break;
+                case EyesStatus.star:
+                    doubleMult += 1;
+                    break;
             }
+        }
+
+        while (doubleMult > 0)
+        {
+            value *= 2;
+            doubleMult -= 1;
         }
 
         return value;
@@ -130,7 +151,7 @@ public class Dice : MonoBehaviour
     /// </summary>
     public void InitEyes()
     {
-        for(int i=0; i< currentEyes; i++)
+        for(int i=0; i<currentEyes; i++)
         {
             if(eyesStatus[i] == EyesStatus.basic)
             {
