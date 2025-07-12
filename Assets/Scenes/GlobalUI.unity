@@ -9558,7 +9558,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f98b31ef03f3e724cb292ebb324ed3d1, type: 3}
   - {fileID: 21300000, guid: b7d8cccd52f1e35499ad423cff74dad4, type: 3}
   lockToy: {fileID: 21300000, guid: 248b4cc42ec4a7b40a3d1ec0c96b1f7f, type: 3}
-  checkToy: 
+  checkToy: 00000000000000000000000000000000
 --- !u!4 &1589897652
 Transform:
   m_ObjectHideFlags: 0

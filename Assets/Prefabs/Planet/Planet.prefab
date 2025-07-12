@@ -49,8 +49,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tmp: {fileID: 1922664524404061028}
   planetStatus: 0
+  planetToys: 0
   distance: 0
   spriteTransform: {fileID: 7088043056628823536}
+  spriteRender: {fileID: 4632888672850576470}
 --- !u!58 &5677896307699779042
 CircleCollider2D:
   m_ObjectHideFlags: 0

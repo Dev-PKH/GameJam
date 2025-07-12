@@ -38,6 +38,8 @@ public class Planet : MonoBehaviour
     public int distance;
 
     public Transform spriteTransform;
+    public SpriteRenderer spriteRender;
+
 
     private void Awake()
     {

@@ -13,7 +13,7 @@ public class ToyManager : MonoBehaviour
     public Sprite lockToy;
 
     // Toy
-    public bool[] checkToy = new bool[16];
+    public bool[] checkToy;
 
     private void Awake()
     {

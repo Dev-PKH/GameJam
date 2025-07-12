@@ -33,8 +33,9 @@ public class InGameManager : MonoBehaviour
     public GameStatus status;
     public Planet[] planetPrefabs; // 행성 프리펩 종류들
 
-    //public Planet curPlanet;
-    public Planets curPlanet;
+    public Planets curPlanetStatus;
+    public Toys curToysStatus;
+
     public int curDistance; // 현재 남은 거리
 
     public int stepDistance; // 단계별 거리
@@ -46,6 +47,7 @@ public class InGameManager : MonoBehaviour
     // 움직임 화면
     public MoveView moveViewObject;
     public SpriteRenderer carRenderer;
+    public SpriteRenderer planetRenderer;
 
     [Header("Status")]
     public int curRollCnt = 0; // 현재 던질 수 있는 주사위 수
@@ -94,6 +96,7 @@ public class InGameManager : MonoBehaviour
         if (Instance == null) Instance = this;
 
         moneyText.text = money.ToString();
+        planetRenderer.sprite = planetPrefabs[UnityEngine.Random.Range(0, planetPrefabs.Length)].spriteRender.sprite;
     }
     void Start()
     {
@@ -165,12 +168,14 @@ public class InGameManager : MonoBehaviour
         rollCountText.text = curRollCnt.ToString();
 
         //Debug.Log("인덱스 체크 : " + (int)curPlanet.planetStatus);
-        moveViewObject.PlanetSpawn(curDistance,(int)curPlanet, 1);
+        moveViewObject.PlanetSpawn(curDistance,(int)curPlanetStatus, 1);
     }
 
     public void SetPlanet(Planet planet)
     {
-        curPlanet = planet.planetStatus;
+        //curPlanet = planet.planetStatus;
+        curPlanetStatus = planet.planetStatus;
+        curToysStatus = planet.planetToys;
 
         // 행성 선택이 이동중이 아닐 경우
         if (status != GameStatus.Move)
@@ -205,7 +210,9 @@ public class InGameManager : MonoBehaviour
         spawnPlanet.ClearList();
     }
 
-    public IEnumerator ChangeShop(bool checkMemorial)
+    //public 
+
+    public IEnumerator ChangeShop()
     {
         // 페이드 아웃 진행
 
@@ -213,12 +220,8 @@ public class InGameManager : MonoBehaviour
 
         ExitMovePlanet();
 
-        if (checkMemorial)
-        {
-            Debug.Log("행성 도착 완료! 이제 보상 아이템 얻어야함");
-            //ToyManager.Instance.GetToy((int)curPlanet.planetToys);
-        }
-
+        Debug.Log("행성 도착 완료! 이제 보상 아이템 얻어야함");
+        ToyManager.Instance.GetToy((int)curPlanetStatus);
 
 
         yield return new WaitForSeconds(2f);
@@ -255,7 +258,7 @@ public class InGameManager : MonoBehaviour
 
 
         selectView.SetActive(true);
-
+        planetRenderer.sprite = planetPrefabs[(int)curPlanetStatus].spriteRender.sprite;
         // 페이드 아웃 종료
 
 
@@ -314,7 +317,7 @@ public class InGameManager : MonoBehaviour
             UpdateMoney(completeMoney + curRollCnt);
 
             //StartCoroutine(ChangeSelect(true)); // 상점으로 바꾸자
-            StartCoroutine(ChangeShop(true));
+            StartCoroutine(ChangeShop());
         }
         else if(curRollCnt == 0)
         {
