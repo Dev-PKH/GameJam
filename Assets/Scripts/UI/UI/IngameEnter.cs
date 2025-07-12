@@ -5,10 +5,22 @@ using UnityEngine;
 public class IngameEnter : MonoBehaviour
 {
     [SerializeField] private MainMenu mainMenu;
+    [SerializeField] private PauseMenu pauseMenu;
 
     private void Start()
     {
         mainMenu.OnIngameEnter += MainMenu_OnIngameEnter;
+        pauseMenu.OnMainMenuEnter += PauseMenu_OnMainMenuEnter;
+    }
+
+    private void PauseMenu_OnMainMenuEnter(object sender, System.EventArgs e)
+    {
+        UIManager.Instance.InitializePannel();
+        UIManager.Instance.AddPanel(mainMenu);
+        SoundManager.instance.PlayBGM(GameplaySound.Shop);
+        LoadSceneManager.Instance.UnLoadScene(SceneName.Ingame);
+        TempUIGameManager.Instance.StatusChange();
+        UIManager.Instance.TopPanelShow();
     }
 
     private void MainMenu_OnIngameEnter(object sender, System.EventArgs e)
@@ -22,4 +34,6 @@ public class IngameEnter : MonoBehaviour
         // 로 MainMenu 씬 언로드하고 인게임 씬 로드해야함
         TempUIGameManager.Instance.StatusChange();
     }
+
+    
 }

@@ -1,3 +1,4 @@
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class PauseMenu : UISelector
     [SerializeField] private Button soundButton;
     [SerializeField] private Button LanguageButton;
     */
+    public event EventHandler OnMainMenuEnter;
 
     private void Start()
     {
@@ -44,6 +46,6 @@ public class PauseMenu : UISelector
 
     public void MainMenuButton()
     {
-        Debug.Log("메인 메뉴");
+        OnMainMenuEnter?.Invoke(this, EventArgs.Empty);
     }
 }

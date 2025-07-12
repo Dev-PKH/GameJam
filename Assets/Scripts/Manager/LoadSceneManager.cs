@@ -38,6 +38,11 @@ public class LoadSceneManager : MonoBehaviour
         SceneManager.LoadSceneAsync((int)sn, LoadSceneMode.Additive);
     }
 
+    public void UnLoadScene(SceneName sn)
+    {
+        SceneManager.UnloadSceneAsync((int)sn);
+    }
+
     public void ChangeScene(SceneName nextScene, SceneName curScene)
     {
         StartCoroutine(LoadScene(nextScene, curScene));

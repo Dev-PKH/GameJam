@@ -51,7 +51,7 @@ public class Dice : MonoBehaviour
 
     void Start()
     {
-        
+        InitEyes();
     }
 
     // Update is called once per frame
@@ -104,5 +104,39 @@ public class Dice : MonoBehaviour
         }
 
         return value;
+    }
+
+    /// <summary>
+    /// 주사위 눈을 초기 설정
+    /// </summary>
+    public void InitEyes()
+    {
+        for(int i=0; i< currentEyes; i++)
+        {
+            if(eyesStatus[i] == EyesStatus.basic)
+            {
+                switch(diceColor[i])
+                {
+                    case DiceColor.basic:
+                        diceEyes[i].color = Color.black;
+                        break;
+                    case DiceColor.green:
+                        diceEyes[i].color = Color.green;
+                        break;
+                    case DiceColor.blue:
+                        diceEyes[i].color = Color.blue;
+                        break;
+                    case DiceColor.purple:
+                        diceEyes[i].color = new Color(0.5f, 0, 0.5f,1f);
+                        break;
+                    case DiceColor.yellow:
+                        diceEyes[i].color = Color.yellow;
+                        break;
+                    case DiceColor.red:
+                        diceEyes[i].color = Color.red;
+                        break;
+                }
+            }
+        }
     }
 }
