@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using static Unity.VisualScripting.FlowStateWidget;
+using UnityEngine.UI;
 
 public enum GameStatus
 {
@@ -26,7 +27,7 @@ public class InGameManager : MonoBehaviour
     [Header("Views")]
     [SerializeField] private GameObject selectView;
     [SerializeField] private GameObject moveView;
-    [SerializeField] private GameObject shopView;
+    //[SerializeField] private GameObject shopView;
 
     // 행성 정보
     public GameStatus status;
@@ -78,6 +79,15 @@ public class InGameManager : MonoBehaviour
     public Sprite[] eyeValues;
     public GetDice[] diceShop;
     public GetDice selectedShop;
+    public Button exitShopButton;
+    public Button normalShopButton;
+    public Button specialShopButton;
+    public TextMeshProUGUI normalShopButtonText;
+    public TextMeshProUGUI specialShopButtonText;
+    public int curDiceIndex = 0; // 현재 선택된 눈 인덱스
+
+    public const int specialValue = 3;
+    public const int normalValue = 1;
 
     private void Awake()
     {
@@ -122,7 +132,7 @@ public class InGameManager : MonoBehaviour
 
         Debug.Log("계산 값 : " + stepDistance);
 
-        int cnt = Random.Range(2, 4); // 2개이상 3개 이하 생성
+        int cnt = UnityEngine.Random.Range(2, 4); // 2개이상 3개 이하 생성
 
         spawnPlanet.SpawnPlanets(cnt, stepDistance, stepSize);
     }
@@ -212,10 +222,9 @@ public class InGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        yield return null;
-        status = GameStatus.Select;
+        exitShopButton.gameObject.SetActive(true);
 
-        foreach(var shop in diceShop)
+        foreach (var shop in diceShop)
         {
             shop.gameObject.SetActive(true);
             shop.SetDice();
@@ -230,10 +239,25 @@ public class InGameManager : MonoBehaviour
         // 페이드 아웃 실행
         status = GameStatus.Select;
 
+        exitShopButton.gameObject.SetActive(false);
+
+        foreach (var shop in diceShop)
+        {
+            shop.gameObject.SetActive(false);
+        }
+        normalShopButton.gameObject.SetActive(false);
+        specialShopButton.gameObject.SetActive(false);
+        selectedShop.gameObject.SetActive(false);
+
+
+        yield return new WaitForSeconds(1f);
+
+
+        selectView.SetActive(true);
+
         // 페이드 아웃 종료
 
 
-        yield return null;
 
         // 페이드 인 실행
 
@@ -333,7 +357,7 @@ public class InGameManager : MonoBehaviour
             NoneAdvanture--;
             RunEvent();
         }
-        else if(Random.value <= 0.9f)
+        else if(UnityEngine.Random.value <= 0.9f)
         {
             RunEvent();
         }
@@ -384,5 +408,71 @@ public class InGameManager : MonoBehaviour
     public void UpdateCarRender(int index)
     {
         carRenderer.sprite = eventSprite[index];
+    }
+
+    /// <summary>
+    /// 상점 버튼 활성화 및 가격 표시 (주사위와 해당 눈을 받음)
+    /// </summary>
+    /// <param name="index"></param>
+    public void SetShopButton(int diceIndex, int eyeIndex)
+    {
+        curDiceIndex = eyeIndex;
+
+        specialShopButton.gameObject.SetActive(true);
+        specialShopButtonText.text = specialValue.ToString();
+
+        if (dices[diceIndex].eyesStatus[eyeIndex] == EyesStatus.basic)
+        {
+            if (dices[diceIndex].diceColor[eyeIndex] == DiceColor.red)
+            {
+                normalShopButton.gameObject.SetActive(false);
+            }
+            else
+            {
+                normalShopButton.gameObject.SetActive(true);
+                normalShopButtonText.text = ((int)dices[diceIndex].diceColor[eyeIndex] + normalValue).ToString();
+            }
+
+        }
+        else
+        {
+            normalShopButton.gameObject.SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// 몇번째 주사위인지를 파악하여 눈을 구매
+    /// </summary>
+    /// <param name="index"></param>
+    public void BuyNormalShopEyes(int diceIndex)
+    {
+        money -= GetNoramlEyesValue();
+        moneyText.text = money.ToString();
+        dices[diceIndex].diceColor[curDiceIndex]++;
+        dices[diceIndex].InitEyes();
+        diceShop[diceIndex].UpgradeViewButton(curDiceIndex);
+        selectedShop.UpgradeViewButton(curDiceIndex);
+        ExitShop();
+    }
+
+    public int GetNoramlEyesValue()
+    {
+       return int.Parse(normalShopButtonText.text);
+    }
+
+    public void BuySpecialShopEyes(int diceIndex)
+    {
+        money -= specialValue;
+        moneyText.text = money.ToString();
+        dices[diceIndex].eyesStatus[curDiceIndex] = (EyesStatus)UnityEngine.Random.Range(0, eyeValues.Length);
+        dices[diceIndex].InitEyes();
+        diceShop[diceIndex].UpgradeViewButton(curDiceIndex);
+        selectedShop.UpgradeViewButton(curDiceIndex);
+        ExitShop();
+    }
+
+    public void ExitShop()
+    {
+        StartCoroutine(ChangeSelect());
     }
 }

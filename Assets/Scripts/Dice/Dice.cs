@@ -137,6 +137,10 @@ public class Dice : MonoBehaviour
                         break;
                 }
             }
+            else
+            {
+                diceEyes[i].sprite = InGameManager.Instance.eyeValues[(int)diceColor[i]];
+            }
         }
     }
 }

@@ -68,45 +68,6 @@ public class GetDice : MonoBehaviour
     public void SetDice()
     {
         CheckDice((int)status);
-        /*Dice dice = InGameManager.Instance.dices[(int)status];
-
-        int len = dice.currentEyes;
-
-        List<Vector2> pos = GetImagePositions(len);
-
-        for (int i=0; i<len; i++)
-        {
-            images[i].gameObject.SetActive(true);
-
-            if (dice.eyesStatus[i] == EyesStatus.basic)
-            {
-                switch (dice.diceColor[i])
-                {
-                    case DiceColor.basic:
-                        images[i].color = Color.black;
-                        break;
-                    case DiceColor.green:
-                        images[i].color = Color.green;
-                        break;
-                    case DiceColor.blue:
-                        images[i].color = Color.blue;
-                        break;
-                    case DiceColor.purple:
-                        images[i].color = new Color(0.5f, 0, 0.5f, 1f);
-                        break;
-                    case DiceColor.yellow:
-                        images[i].color = Color.yellow;
-                        break;
-                    case DiceColor.red:
-                        images[i].color = Color.red;
-                        break;
-                }
-            }
-            else
-            {
-                images[i].sprite = dice.diceEyes[i].sprite;
-            }
-        }*/
     }
 
     // 다이스 종류 체크
@@ -161,5 +122,37 @@ public class GetDice : MonoBehaviour
     {
         status = (DiceStatus)index;
         CheckDice(index);
+    }
+
+    /// <summary>
+    /// 버튼 번호를 받아 해당 번호를 강화
+    /// </summary>
+    /// <param name="index"></param>
+    public void UpgradeViewButton(int index)
+    {
+        //if(co)
+        InGameManager.Instance.SetShopButton((int)status, index);
+        /*Dice dice = InGameManager.Instance.dices[(int)status];
+
+        InGameManager.Instance.specialShopButton.SetActive(true);
+
+        if (dice.eyesStatus[index] == EyesStatus.basic)
+        {
+            InGameManager.Instance.normalShopButton.SetActive(true);
+        }
+        else InGameManager.Instance.normalShopButton.SetActive(false);*/
+    }
+
+    public void NormalEyes()
+    {
+        if (InGameManager.Instance.GetNoramlEyesValue() > InGameManager.Instance.money) return;
+
+        InGameManager.Instance.BuyNormalShopEyes((int)status);
+    }
+
+    public void SpecialEyes()
+    {
+        if (InGameManager.Instance.money < 3) return;
+        InGameManager.Instance.BuySpecialShopEyes((int)status);
     }
 }
