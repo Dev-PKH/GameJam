@@ -20,5 +20,5 @@ MonoBehaviour:
   choices:
   - choiceText: "\uAD74\uB9B0\uB2E4!"
     actionType: DiceRoll
-    actionParam: 1 4 -4
+    actionParam: 1 4 4
   chanceMult: 10

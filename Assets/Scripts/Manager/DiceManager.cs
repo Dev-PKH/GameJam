@@ -103,25 +103,23 @@ public class DiceManager : MonoBehaviour
 
         if(InGameManager.Instance.eventDice)
         {
-            InGameManager.Instance.eventDice = false;
-
-            if(InGameManager.Instance.isUp)
+            if(InGameManager.Instance.isUp) // 수를 넘겨야할때
             {
-                if(selectedDice.GetDistance() >= InGameManager.Instance.eventDiceDistance)
+                if(selectedDice.GetDistance() >= InGameManager.Instance.eventDiceNum) // 저장값 이상이면
                 {
-                    if (InGameManager.Instance.eventDiceNum == 100)
+                    if (InGameManager.Instance.eventDiceDistance == 100)
                     {
                         InGameManager.Instance.UpdateCarRender(2);
                     }
                     else
-                        InGameManager.Instance.SetDistance(InGameManager.Instance.curDistance + InGameManager.Instance.eventDiceNum);
+                        InGameManager.Instance.UpdateDistance(-InGameManager.Instance.eventDiceDistance); // 정해진값만큼 넘겨준다
                 }
             }
             else
             {
-                if (selectedDice.GetDistance() <= InGameManager.Instance.eventDiceDistance)
+                if (selectedDice.GetDistance() <= InGameManager.Instance.eventDiceNum)
                 {
-                    InGameManager.Instance.SetDistance(InGameManager.Instance.curDistance + InGameManager.Instance.eventDiceNum);
+                    InGameManager.Instance.UpdateDistance(-InGameManager.Instance.eventDiceDistance);
                 }
             }
 

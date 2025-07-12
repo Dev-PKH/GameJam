@@ -19,8 +19,8 @@ MonoBehaviour:
   choices:
   - choiceText: "\uC8FC\uC720 \uD560 \uC2DC\uAC04!"
     actionType: HybridEvent
-    actionParam: -3 -2
+    actionParam: -3 2
   - choiceText: "\uADF8\uB0E5 \uAC00\uB294\uAC78\uB85C~"
     actionType: UpdateDistance
-    actionParam: 2
+    actionParam: -2
   chanceMult: 10

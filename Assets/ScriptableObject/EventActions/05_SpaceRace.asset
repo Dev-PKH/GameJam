@@ -20,7 +20,7 @@ MonoBehaviour:
   choices:
   - choiceText: "\uB108 \uB9C8\uCE68 \uC798 \uAC78\uB838\uB2E4."
     actionType: HybridEvent
-    actionParam: 3 2
+    actionParam: 3 -2
   - choiceText: "\uCAC4\uC740 \uAC8C \uC544\uB2C8\uB77C, \uBC14\uBE60\uC11C."
     actionType: DoNothing
     actionParam: 

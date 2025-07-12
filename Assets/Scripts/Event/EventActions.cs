@@ -26,7 +26,7 @@ public class EventActions : MonoBehaviour
 	{
 		if (actionMap.TryGetValue(actionType, out var action))
 		{
-			Debug.Log(actionType);
+			//Debug.Log(actionType);
 			action.Invoke(param);
 			InGameManager.Instance.ExitEvent();
         }
@@ -44,6 +44,8 @@ public class EventActions : MonoBehaviour
     {
         int value = int.Parse(param);
 		InGameManager.Instance.limitDistance = value;
+
+        Debug.Log("리밋 실행");
     }
 
 	private void RandomDistance(string param)
@@ -84,7 +86,7 @@ public class EventActions : MonoBehaviour
     private void UpdateDistance(string param)
     {
         int value = int.Parse(param);
-		InGameManager.Instance.SetDistance(InGameManager.Instance.curDistance + value);
+		InGameManager.Instance.UpdateDistance(-value);
     }
 
 	private void NoneAdvanture(string param)

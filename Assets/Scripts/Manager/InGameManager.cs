@@ -67,6 +67,8 @@ public class InGameManager : MonoBehaviour
     private void Awake()
     {
         if (Instance == null) Instance = this;
+
+        moneyText.text = money.ToString();
     }
     void Start()
     {
@@ -221,37 +223,40 @@ public class InGameManager : MonoBehaviour
 
         if(limitDistance != 0)
         {
+            Debug.Log("현재 limit와 value값 : " + limitDistance + "/ " + value);
             value = value > limitDistance ? limitDistance : value;
             limitDistance = 0;
         }
 
-        curDistance -= value;
-        if (curDistance <= value) // 도착
+        UpdateDistance(-value);
+    }    
+
+
+    /// <summary>
+    /// 값을 업데이트함
+    /// </summary>
+    /// <param name="value"></param>
+    public void UpdateDistance(int value)
+    {
+        curDistance += value;
+        if(curDistance <= 0)
         {
             completeCount++;
-            SetDistance(0);
+            moveViewObject.planetList[0].SetDistance(0);
             UpdateMoney(completeMoney + curRollCnt);
 
             StartCoroutine(ChangeSelect(true));
         }
-        else if(curRollCnt == 0) // 도착못함
+        else if(curRollCnt == 0)
         {
+            moveViewObject.planetList[0].SetDistance(curDistance);
             OutPlanet();
         }
-        else // 이동
+        else
         {
-            SetDistance(curDistance);
-            CheckEvent();
+            moveViewObject.planetList[0].SetDistance(curDistance);
+            if(!eventDice) CheckEvent();
         }
-    }    
-
-    /// <summary>
-    /// 해당 값으로 거리 설정
-    /// </summary>
-    /// <param name="value"></param>
-    public void SetDistance(int value)
-    {
-        moveViewObject.planetList[0].SetDistance(value);
     }
 
     /// <summary>
@@ -290,8 +295,12 @@ public class InGameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("탐험");
+            DiceManager.Instance.SetDice(true);
         }
+        /*else
+        {
+            Debug.Log("탐험");
+        }*/
     }
 
     public void RunEvent()
@@ -311,6 +320,7 @@ public class InGameManager : MonoBehaviour
         isUp = false;
         eventDiceNum = 0;
         eventDiceDistance = 0;
+        eventDice = false;
 
         DiceManager.Instance.SetDice(true);
     }

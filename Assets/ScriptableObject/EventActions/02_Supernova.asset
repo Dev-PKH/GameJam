@@ -23,5 +23,5 @@ MonoBehaviour:
     actionParam: -1
   - choiceText: "\uD53C\uD574\uC11C \uAC00\uC790!"
     actionType: UpdateDistance
-    actionParam: 1
+    actionParam: -1
   chanceMult: 10
