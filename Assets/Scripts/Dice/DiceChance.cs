@@ -26,6 +26,11 @@ public class DiceChance : MonoBehaviour
 
     public void UpdateExistence()
     {
+        if(!gameObject.activeSelf)
+        {
+            return;
+        }
+
         // 남은 갯수 표시가 올바른지 확인하고 다른 경우 변화시킴
         if (chanceIndex <= InGameManager.Instance.curRollCnt)
         {
@@ -43,7 +48,7 @@ public class DiceChance : MonoBehaviour
     {
         float time = 0f;
         Vector3 scale = gameObject.transform.localScale;
-        if (scale.y > 0f )// Already Activated
+        if (scale.y > 0.5f )// Already Activated
         {
             yield break;
         }
@@ -62,7 +67,7 @@ public class DiceChance : MonoBehaviour
     {
         float time = 0f;
         Vector3 scale = gameObject.transform.localScale;
-        if (scale.y < 1f) // Already Deactivated
+        if (scale.y < 0.5f) // Already Deactivated
         {
             yield break;
         }
@@ -75,5 +80,6 @@ public class DiceChance : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
+        gameObject.SetActive(false);
     }
 }

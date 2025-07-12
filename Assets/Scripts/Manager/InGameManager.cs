@@ -55,12 +55,12 @@ public class InGameManager : MonoBehaviour
     [Header("Status")]
     public int curRollCnt = 0; // 현재 던질 수 있는 주사위 수
     public int setRollCnt = 5; // 턴마다 던질 수 있는 주사위 수
-    public int money = 10;
+    public int money = 5;
     
 
     public TextMeshPro rollCountText;
     public TextMeshPro moneyText;
-    public const int completeMoney = 3; // 행성 도달 완료
+    public const int completeMoney = 2; // 행성 도달 완료
 
     // 주사위 정보
     public Dice[] dices;
@@ -172,18 +172,20 @@ public class InGameManager : MonoBehaviour
 
     public void EnterMovePlanet() // 행성 이동 진입
     {
-        carRenderer.sprite = eventSprite[0];
+        //carRenderer.sprite = eventSprite[0];
         selectView.SetActive(false);
 
+        curRollCnt = setRollCnt;
         //rollCountText.gameObject.SetActive(true);
+        rollCountText.text = curRollCnt.ToString();
+        
         foreach (var dChance in dChances)
         {
             dChance.gameObject.SetActive(true);
+            dChance.UpdateExistence();
         }
         moveView.SetActive(true);
-        curRollCnt = setRollCnt;
-        rollCountText.text = curRollCnt.ToString();
-
+        
         //Debug.Log("인덱스 체크 : " + (int)curPlanet.planetStatus);
         moveViewObject.PlanetSpawn(curDistance,(int)curPlanetStatus, 1);
     }
@@ -211,9 +213,9 @@ public class InGameManager : MonoBehaviour
         // 페이드 아웃 실행
         FadeScript.Instance.FadeOut(0.5f);
         yield return new WaitForSeconds(1f); // 0.5초 대기후 드라이브 화면 전환
+
         status = GameStatus.Move;
 
-        // 페이드 아웃 종료
         EnterMovePlanet();
 
         yield return null;
@@ -231,6 +233,10 @@ public class InGameManager : MonoBehaviour
     /// <returns></returns>
     public IEnumerator ChangeOut()
     {
+        // 페이드 아웃 실행
+        FadeScript.Instance.FadeOut(0.5f);
+        yield return new WaitForSeconds(1f); // 0.5초 대기후 드라이브 화면 전환
+
         List<int> lostToyList = new List<int>();
 
         if (ToyManager.Instance.toyCount > 0)
@@ -249,7 +255,9 @@ public class InGameManager : MonoBehaviour
             completeCount -= 2;
             if (completeCount < 0) completeCount = 0;
         }
-        // 페이드인 시작
+        // 페이드 인 실행
+        FadeScript.Instance.FadeIn(0.5f);
+        carRenderer.sprite = eventSprite[4]; // 차 교체
         yield return new WaitForSeconds(1f);
 
         ExitMovePlanet();
@@ -291,6 +299,7 @@ public class InGameManager : MonoBehaviour
             shop.SetDice();
         }
 
+        carRenderer.sprite = eventSprite[0]; // 차 교체
         //selectView.SetActive(true);
         //StartCoroutine(ChangeSelect());
     }
@@ -393,6 +402,7 @@ public class InGameManager : MonoBehaviour
     {
         money += value;
         if (money < 0) money = 0;
+        
         moneyText.text = money.ToString();
     }
 

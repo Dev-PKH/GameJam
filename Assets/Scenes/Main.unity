@@ -2807,7 +2807,7 @@ MonoBehaviour:
   planetRenderer: {fileID: 755174350}
   curRollCnt: 0
   setRollCnt: 5
-  money: 10
+  money: 5
   rollCountText: {fileID: 210557112}
   moneyText: {fileID: 1455383746}
   dices:
@@ -2919,10 +2919,10 @@ MonoBehaviour:
   - {fileID: 1551130140}
   diceSlot: {fileID: 1686925511}
   diceButton: {fileID: 1124269305}
-  diceFastTimer: 1
-  diceSlowTimer: 4
-  maxSpeed: 30
-  minSpeed: 15
+  diceFastTimer: 0.5
+  diceSlowTimer: 2
+  maxSpeed: 20
+  minSpeed: 10
 --- !u!1 &713455069
 GameObject:
   m_ObjectHideFlags: 0
@@ -3257,7 +3257,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a56eaa41dd1cf4b45a4105742d01666c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0c9a1cb465ad69642a65a3392225ba1c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
