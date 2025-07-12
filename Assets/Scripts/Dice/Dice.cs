@@ -155,7 +155,9 @@ public class Dice : MonoBehaviour
         {
             if(eyesStatus[i] == EyesStatus.basic)
             {
-                switch(diceColor[i])
+                diceEyes[i].sprite = InGameManager.Instance.eyeValues[0];
+
+                switch (diceColor[i])
                 {
                     case DiceColor.basic:
                         diceEyes[i].color = Color.black;

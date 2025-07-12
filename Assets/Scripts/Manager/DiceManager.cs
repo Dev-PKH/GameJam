@@ -54,6 +54,8 @@ public class DiceManager : MonoBehaviour
     {
         diceSlot.SetActive(check);
         diceButton.SetActive(check);
+
+        if (check) foreach (var d in dices) d.InitEyes();
     }
 
 

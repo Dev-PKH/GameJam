@@ -89,6 +89,7 @@ public class GetDice : MonoBehaviour
 
             if (dice.eyesStatus[i] == EyesStatus.basic)
             {
+                images[i].sprite = InGameManager.Instance.eyeValues[0];
                 switch (dice.diceColor[i])
                 {
                     case DiceColor.basic:
@@ -122,6 +123,8 @@ public class GetDice : MonoBehaviour
     {
         status = (DiceStatus)index;
         CheckDice(index);
+        InGameManager.Instance.normalShopButton.gameObject.SetActive(false);
+        InGameManager.Instance.specialShopButton.gameObject.SetActive(false);
     }
 
     /// <summary>

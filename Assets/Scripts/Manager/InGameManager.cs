@@ -219,17 +219,22 @@ public class InGameManager : MonoBehaviour
     {
         List<int> lostToyList = new List<int>();
 
-        for(int i=0; i< ToyManager.Instance.checkToy.Length; i++)
+        if (ToyManager.Instance.toyCount > 0)
         {
-            if (ToyManager.Instance.checkToy[i]) lostToyList.Add(i);
+            for (int i = 0; i < 16; i++)
+            {
+                if (ToyManager.Instance.checkToy[i])
+                {
+                    lostToyList.Add(i);
+                    Debug.Log("탈락후보 현재 인덱스 : " + i);
+                }
+            }
+            int index = UnityEngine.Random.Range(0, lostToyList.Count);
+            ToyManager.Instance.LostToy(lostToyList[index]);
+
+            completeCount -= 2;
+            if (completeCount < 0) completeCount = 0;
         }
-
-        int index = UnityEngine.Random.Range(0, lostToyList.Count);
-        ToyManager.Instance.LostToy(index);
-
-        completeCount -= 2;
-        if (completeCount < 0) completeCount = 0;
-
         // 페이드인 시작
         yield return new WaitForSeconds(1f);
 
@@ -476,7 +481,9 @@ public class InGameManager : MonoBehaviour
         moneyText.text = money.ToString();
         dices[diceIndex].diceColor[curDiceIndex]++;
         dices[diceIndex].InitEyes();
+        diceShop[diceIndex].CheckDice(diceIndex); //
         diceShop[diceIndex].UpgradeViewButton(curDiceIndex);
+        selectedShop.CheckDice(diceIndex); //
         selectedShop.UpgradeViewButton(curDiceIndex);
         //ExitShop();
     }
@@ -492,7 +499,9 @@ public class InGameManager : MonoBehaviour
         moneyText.text = money.ToString();
         dices[diceIndex].eyesStatus[curDiceIndex] = (EyesStatus)UnityEngine.Random.Range(0, eyeValues.Length);
         dices[diceIndex].InitEyes();
+        diceShop[diceIndex].CheckDice(diceIndex); //
         diceShop[diceIndex].UpgradeViewButton(curDiceIndex);
+        selectedShop.CheckDice(diceIndex); //
         selectedShop.UpgradeViewButton(curDiceIndex);
         //ExitShop();
     }
