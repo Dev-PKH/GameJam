@@ -478,7 +478,7 @@ public class InGameManager : MonoBehaviour
         dices[diceIndex].InitEyes();
         diceShop[diceIndex].UpgradeViewButton(curDiceIndex);
         selectedShop.UpgradeViewButton(curDiceIndex);
-        ExitShop();
+        //ExitShop();
     }
 
     public int GetNoramlEyesValue()
@@ -494,7 +494,7 @@ public class InGameManager : MonoBehaviour
         dices[diceIndex].InitEyes();
         diceShop[diceIndex].UpgradeViewButton(curDiceIndex);
         selectedShop.UpgradeViewButton(curDiceIndex);
-        ExitShop();
+        //ExitShop();
     }
 
     public void ExitShop()

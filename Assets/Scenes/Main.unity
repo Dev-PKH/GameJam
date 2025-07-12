@@ -422,7 +422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8228425307369902199, guid: 40da21165743a1e45ad781237157512f, type: 3}
       propertyPath: diceColor.Array.data[0]
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2286,7 +2286,7 @@ MonoBehaviour:
   curToysStatus: 0
   curDistance: 0
   stepDistance: 0
-  completeCount: 30
+  completeCount: 0
   spawnPlanet: {fileID: 1740446693}
   outPlanet: {fileID: 21300000, guid: 2e7b7e986c2a17942b75e307309bdec8, type: 3}
   moveViewObject: {fileID: 1375867913}
@@ -4215,7 +4215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3441992644343798617, guid: fce493ee0ca20004ea7bb413cfd83166, type: 3}
       propertyPath: diceColor.Array.data[0]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5853,7 +5853,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8338804454951212863, guid: 6896cf1f8462c124caa844c3d08f06ab, type: 3}
       propertyPath: diceColor.Array.data[0]
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6235,7 +6235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5169533970803421215, guid: 7aeb92c1cad4df94a86fa76d03678e23, type: 3}
       propertyPath: diceColor.Array.data[0]
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8091774648539093633, guid: 7aeb92c1cad4df94a86fa76d03678e23, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7062,11 +7062,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8503973801450532004, guid: 857fe6932bb3c3c47872caa09b63e599, type: 3}
       propertyPath: diceColor.Array.data[0]
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8503973801450532004, guid: 857fe6932bb3c3c47872caa09b63e599, type: 3}
       propertyPath: diceColor.Array.data[1]
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7317,7 +7317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2529502623226487590, guid: cd0120c02cc97da429083b6b19f82edf, type: 3}
       propertyPath: diceColor.Array.data[0]
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
