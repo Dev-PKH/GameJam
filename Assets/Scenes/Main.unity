@@ -649,7 +649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8228425307369902199, guid: 40da21165743a1e45ad781237157512f, type: 3}
       propertyPath: status
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8228425307369902199, guid: 40da21165743a1e45ad781237157512f, type: 3}
       propertyPath: diceColor.Array.data[0]
@@ -2919,9 +2919,9 @@ MonoBehaviour:
   - {fileID: 1551130140}
   diceSlot: {fileID: 1686925511}
   diceButton: {fileID: 1124269305}
-  diceFastTimer: 0.5
-  diceSlowTimer: 2
-  maxSpeed: 20
+  diceFastTimer: 1.5
+  diceSlowTimer: 1.5
+  maxSpeed: 12
   minSpeed: 10
 --- !u!1 &713455069
 GameObject:
@@ -4809,7 +4809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3441992644343798617, guid: fce493ee0ca20004ea7bb413cfd83166, type: 3}
       propertyPath: status
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3441992644343798617, guid: fce493ee0ca20004ea7bb413cfd83166, type: 3}
       propertyPath: diceColor.Array.data[0]
@@ -7014,7 +7014,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8338804454951212863, guid: 6896cf1f8462c124caa844c3d08f06ab, type: 3}
       propertyPath: status
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8338804454951212863, guid: 6896cf1f8462c124caa844c3d08f06ab, type: 3}
       propertyPath: diceColor.Array.data[0]
@@ -7496,7 +7496,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5169533970803421215, guid: 7aeb92c1cad4df94a86fa76d03678e23, type: 3}
       propertyPath: status
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5169533970803421215, guid: 7aeb92c1cad4df94a86fa76d03678e23, type: 3}
       propertyPath: diceColor.Array.data[0]
@@ -8578,7 +8578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2529502623226487590, guid: cd0120c02cc97da429083b6b19f82edf, type: 3}
       propertyPath: status
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2529502623226487590, guid: cd0120c02cc97da429083b6b19f82edf, type: 3}
       propertyPath: diceColor.Array.data[0]

@@ -254,19 +254,17 @@ public class InGameManager : MonoBehaviour
             completeCount -= 2;
             if (completeCount < 0) completeCount = 0;
         }
-        // 페이드 인 실행
-        FadeScript.Instance.FadeIn(0.5f);
-        carRenderer.sprite = eventSprite[4]; // 차 교체
-        yield return new WaitForSeconds(1f);
-
         ExitMovePlanet();
 
+        // 페이드 인 실행
+        FadeScript.Instance.FadeIn(0.5f);
 
         selectView.SetActive(true);
         carRenderer.sprite = eventSprite[4]; // 차 교체
         planetRenderer.sprite = outPlanet;
         status = GameStatus.Select;
 
+        yield return new WaitForSeconds(1f);
         //yield return new WaitForSeconds(1f); // 1초 대기후 선택 행성 로직 실행
 
         SelectRun();
