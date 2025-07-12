@@ -216,6 +216,7 @@ public class InGameManager : MonoBehaviour
         if (checkMemorial)
         {
             Debug.Log("행성 도착 완료! 이제 보상 아이템 얻어야함");
+            //ToyManager.Instance.GetToy((int)curPlanet.planetToys);
         }
 
 

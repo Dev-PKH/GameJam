@@ -34,6 +34,7 @@ public class Planet : MonoBehaviour
     public TextMeshPro tmp;
 
     public Planets planetStatus;
+    public Toys planetToys;
     public int distance;
 
     public Transform spriteTransform;
