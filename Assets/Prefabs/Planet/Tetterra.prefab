@@ -12,6 +12,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tetterra
       objectReference: {fileID: 0}
+    - target: {fileID: 465969405582598373, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -6284006469610691216, guid: 3bfc75a95ca299947a6a51c7a3a48eaf, type: 2}
+    - target: {fileID: 1922664524404061028, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 3bfc75a95ca299947a6a51c7a3a48eaf, type: 2}
+    - target: {fileID: 1922664524404061028, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -6284006469610691216, guid: 3bfc75a95ca299947a6a51c7a3a48eaf, type: 2}
+    - target: {fileID: 1922664524404061028, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2968655666266717218, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2968655666266717218, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 4632888672850576470, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -60,9 +84,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5677896307699779042, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677896307699779042, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7088043056628823536, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7088043056628823536, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.91
+      objectReference: {fileID: 0}
     - target: {fileID: 8407624045958023383, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
       propertyPath: planetStatus
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117878727570541096, guid: c7082ca8845132f43b0dc09a7795b58d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.272
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
