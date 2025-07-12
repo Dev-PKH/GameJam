@@ -67,7 +67,8 @@ public class GetDice : MonoBehaviour
 
     public void SetDice()
     {
-        Dice dice = InGameManager.Instance.dices[(int)status];
+        CheckDice((int)status);
+        /*Dice dice = InGameManager.Instance.dices[(int)status];
 
         int len = dice.currentEyes;
 
@@ -105,6 +106,60 @@ public class GetDice : MonoBehaviour
             {
                 images[i].sprite = dice.diceEyes[i].sprite;
             }
+        }*/
+    }
+
+    // 다이스 종류 체크
+    public void CheckDice(int index)
+    {
+        foreach (var img in images) img.gameObject.SetActive(false);
+
+
+        Dice dice = InGameManager.Instance.dices[index];
+
+        int len = dice.currentEyes;
+
+        List<Vector2> pos = GetImagePositions(len);
+
+        for (int i = 0; i < len; i++)
+        {
+            images[i].gameObject.SetActive(true);
+            images[i].rectTransform.anchoredPosition = pos[i];
+
+            if (dice.eyesStatus[i] == EyesStatus.basic)
+            {
+                switch (dice.diceColor[i])
+                {
+                    case DiceColor.basic:
+                        images[i].color = Color.black;
+                        break;
+                    case DiceColor.green:
+                        images[i].color = Color.green;
+                        break;
+                    case DiceColor.blue:
+                        images[i].color = Color.blue;
+                        break;
+                    case DiceColor.purple:
+                        images[i].color = new Color(0.5f, 0, 0.5f, 1f);
+                        break;
+                    case DiceColor.yellow:
+                        images[i].color = Color.yellow;
+                        break;
+                    case DiceColor.red:
+                        images[i].color = Color.red;
+                        break;
+                }
+            }
+            else
+            {
+                images[i].sprite = dice.diceEyes[i].sprite;
+            }
         }
+    }
+
+    public void ViewDice(int index)
+    {
+        status = (DiceStatus)index;
+        CheckDice(index);
     }
 }
