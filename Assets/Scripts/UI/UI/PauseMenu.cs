@@ -48,4 +48,10 @@ public class PauseMenu : UISelector
     {
         OnMainMenuEnter?.Invoke(this, EventArgs.Empty);
     }
+
+    public override void Back()
+    {
+        UIManager.Instance.TopPaneHide();
+        //base.Back();
+    }
 }
