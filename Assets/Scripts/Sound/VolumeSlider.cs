@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class VolumeSlider : MonoBehaviour
 {
-	//[SerializeField] private SoundType soundType;
+	[SerializeField] private SoundType soundType;
 	[SerializeField] private GameObject fillArea;
 	private Slider slider;
 
@@ -21,7 +21,7 @@ public class VolumeSlider : MonoBehaviour
 
 	private void SetVolume(float value)
 	{
-		//SoundManager.instance.SetVolume(soundType, value);
+		SoundManager.instance.SetVolume(soundType, value);
 
 		if (value <= 0.0001f)
 			fillArea.SetActive(false);

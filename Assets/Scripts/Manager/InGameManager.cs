@@ -181,6 +181,22 @@ public class InGameManager : MonoBehaviour
         spawnPlanet.ClearList();
     }
 
+    public IEnumerator ChangeShop(bool checkMemorial)
+    {
+        // 페이드 아웃 진행
+
+        if (checkMemorial)
+        {
+            Debug.Log("행성 도착 완료! 이제 보상 아이템 얻어야함");
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        yield return null;
+        status = GameStatus.Select;
+
+    }
+
     public IEnumerator ChangeSelect(bool checkMemorial)
     {
         // 페이드 아웃 실행
@@ -193,10 +209,10 @@ public class InGameManager : MonoBehaviour
 
         // 페이드 인 실행
 
-        if(checkMemorial)
+        /*if(checkMemorial)
         {
             Debug.Log("행성 도착 완료! 이제 보상 아이템 얻어야함");
-        }
+        }*/
 
         // 페이드 아웃 실행
 
@@ -245,7 +261,7 @@ public class InGameManager : MonoBehaviour
             moveViewObject.planetList[0].SetDistance(0);
             UpdateMoney(completeMoney + curRollCnt);
 
-            StartCoroutine(ChangeSelect(true));
+            StartCoroutine(ChangeSelect(true)); // 상점으로 바꾸자
         }
         else if(curRollCnt == 0)
         {

@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public enum SceneName
 {
     Core,
-    Main,
+    UI,
+    Ingame,
     None
 }
 
@@ -18,7 +19,7 @@ public class LoadSceneManager : MonoBehaviour
     private void Awake()
     {
         if (Instance == null) instance = this;
-        LoadScene(SceneName.Main);
+        LoadScene(SceneName.UI);
     }
 
     void Start()

@@ -1,13 +1,20 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class FadeScript : MonoBehaviour
 {
+    public static FadeScript Instance { get; private set; }
+
     public Image Panel;
     float time = 0f;
     float F_time = 1f;
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+    }
 
     public void FadeIn()
     {
@@ -23,7 +30,7 @@ public class FadeScript : MonoBehaviour
         time = 0f;
         Panel.gameObject.SetActive(true);
         Color alpha = Panel.color;
-        // ÆäÀÌµå ÀÎ ÁøÇà Áß
+        // í˜ì´ë“œ ì¸ ì§„í–‰ ì¤‘
         while (alpha.a < 1f)
         {
             time += Time.deltaTime / F_time;
@@ -38,7 +45,7 @@ public class FadeScript : MonoBehaviour
     {
         time = 0f;
         Color alpha = Panel.color;
-        // ÆäÀÌµå ¾Æ¿ô ÁøÇà Áß
+        // í˜ì´ë“œ ì•„ì›ƒ ì§„í–‰ ì¤‘
         while (alpha.a > 0f)
         {
             time += Time.deltaTime / F_time;
@@ -46,7 +53,7 @@ public class FadeScript : MonoBehaviour
             Panel.color = alpha;
             yield return null;
         }
-        // ÆäÀÌµå ¾Æ¿ô ¿Ï·á
+        // í˜ì´ë“œ ì•„ì›ƒ ì™„ë£Œ
         Panel.gameObject.SetActive(false);
         yield return null;
     }
