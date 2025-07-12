@@ -19,9 +19,9 @@ MonoBehaviour:
   image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   choices:
   - choiceText: "\uADF8\uB300\uB85C \uB3CC\uC9C4!"
-    actionType: IncreaseHP
-    actionParam: 10
+    actionType: RandomDistance
+    actionParam: -1
   - choiceText: "\uD53C\uD574\uC11C \uAC00\uC790!"
-    actionType: IncreaseHP
-    actionParam: 10
+    actionType: UpdateDistance
+    actionParam: 1
   chanceMult: 10

@@ -2,13 +2,13 @@
 
 public class EventController : MonoBehaviour
 {
-	[SerializeField] private EventManager eventManager;
+	[SerializeField] public EventManager eventManager;
 	[SerializeField] private EventData[] allEvents; // 여러 ScriptableObject들
 
 	int prevIndex = -1;
 	bool isActive = false;
 
-	private void Update()
+	/*private void Update()
 	{
 		if(Input.GetKeyDown(KeyCode.Alpha0))
 		{
@@ -21,7 +21,7 @@ public class EventController : MonoBehaviour
 			eventManager.gameObject.SetActive(isActive);
 
         }
-	}
+	}*/
 
     // 이번에 올 이벤트의 인덱스를 구함
 	public int FetchEventIndex()

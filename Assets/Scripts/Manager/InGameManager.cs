@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static Unity.VisualScripting.FlowStateWidget;
 
 public enum GameStatus
 {
@@ -17,6 +18,7 @@ public class InGameManager : MonoBehaviour
     [Header("Views")]
     [SerializeField] private GameObject selectView;
     [SerializeField] private GameObject moveView;
+    [SerializeField] private GameObject shopView;
 
     // 행성 정보
     public GameStatus status;
@@ -34,13 +36,33 @@ public class InGameManager : MonoBehaviour
 
     // 움직임 화면
     public MoveView moveViewObject;
+    public SpriteRenderer carRenderer;
 
-    public TextMeshPro rollCountText;
+    [Header("Status")]
     public int curRollCnt = 0; // 현재 던질 수 있는 주사위 수
     public int setRollCnt = 5; // 턴마다 던질 수 있는 주사위 수
+    public int money = 10;
+    
+
+    public TextMeshPro rollCountText;
+    public TextMeshPro moneyText;
+    public const int completeMoney = 3; // 행성 도달 완료
+
 
     // 주사위 정보
     public Dice[] dices;
+
+    // 이벤트
+    public EventController eventController; 
+
+    public Sprite[] eventSprite;
+    public int limitDistance = 0;
+    public int NoneAdvanture = 0;
+    public bool eventDice = false;
+
+    public bool isUp; // 주사위가 몇 이상인지
+    public int eventDiceNum; // 이벤트 주사위 몇
+    public int eventDiceDistance; // 이벤트 주사위 이동거리
 
     private void Awake()
     {
@@ -197,12 +219,19 @@ public class InGameManager : MonoBehaviour
         curRollCnt--;
         rollCountText.text = curRollCnt.ToString();
 
+        if(limitDistance != 0)
+        {
+            value = value > limitDistance ? limitDistance : value;
+            limitDistance = 0;
+        }
+
         curDistance -= value;
-        if(curDistance <= 0 ) // 도착
+        if (curDistance <= value) // 도착
         {
             completeCount++;
             SetDistance(0);
-           
+            UpdateMoney(completeMoney + curRollCnt);
+
             StartCoroutine(ChangeSelect(true));
         }
         else if(curRollCnt == 0) // 도착못함
@@ -212,11 +241,12 @@ public class InGameManager : MonoBehaviour
         else // 이동
         {
             SetDistance(curDistance);
+            CheckEvent();
         }
     }    
 
     /// <summary>
-    ///  거리 갱신
+    /// 해당 값으로 거리 설정
     /// </summary>
     /// <param name="value"></param>
     public void SetDistance(int value)
@@ -230,5 +260,75 @@ public class InGameManager : MonoBehaviour
     public void OutPlanet()
     {
         Debug.Log("주사위 다굴렸다.");
+    }
+
+    /// <summary>
+    /// 매개변수만큼 돈이 업데이트
+    /// </summary>
+    public void UpdateMoney(int value)
+    {
+        money += value;
+        moneyText.text = money.ToString();
+    }
+
+    /// <summary>
+    ///  이벤트 체크 및 실행
+    /// </summary>
+    public void CheckEvent()
+    {
+        DiceManager.Instance.SetDice(false);
+
+        // 이벤트 실행
+        if (NoneAdvanture > 0)
+        {
+            NoneAdvanture--;
+            RunEvent();
+        }
+        else if(Random.value <= 0.9f)
+        {
+            RunEvent();
+        }
+        else
+        {
+            Debug.Log("탐험");
+        }
+    }
+
+    public void RunEvent()
+    {
+        eventController.eventManager.gameObject.SetActive(true);
+        eventController.TriggerRandomEvent();
+    }
+
+    public void ExitEvent()
+    {
+        eventController.eventManager.gameObject.SetActive(false);
+        DiceManager.Instance.SetDice(true);
+    }
+
+    public void ExitRollEvent()
+    {
+        isUp = false;
+        eventDiceNum = 0;
+        eventDiceDistance = 0;
+
+        DiceManager.Instance.SetDice(true);
+    }
+
+    public void EventRoll(int chcek, int limit, int dist)
+    {
+        isUp = chcek == 1 ? true : false;
+        eventDiceNum = limit;
+        eventDiceDistance = dist;
+
+        eventDice = true;
+        DiceManager.Instance.diceSlot.SetActive(true);
+        DiceManager.Instance.RollDice();
+        eventController.eventManager.gameObject.SetActive(false);
+    }
+
+    public void UpdateCarRender(int index)
+    {
+        carRenderer.sprite = eventSprite[index];
     }
 }

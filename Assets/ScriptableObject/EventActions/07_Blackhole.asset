@@ -17,10 +17,7 @@ MonoBehaviour:
     \uD558\uB824\uBA74 \uAF64\uB098 \uC18D\uB3C4\uB97C \uB0B4\uC57C \uACA0\uB124\uC694."
   image: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   choices:
-  - choiceText: "\uC8FC\uC0AC\uC704 5 \uBBF8\uB9CC"
-    actionType: GainRelic
-    actionParam: "\uC11D\uD6C8\uC758 \uB9C8\uC9C0\uB9C9 \uBA38\uB9AC\uCE74\uB77D"
-  - choiceText: "\uC8FC\uC0AC\uC704 5 \uC774\uC0C1"
-    actionType: DecreaseHP
-    actionParam: 100
+  - choiceText: "\uBE14\uB799\uD640\uC774\uB2E4"
+    actionType: DiceRoll
+    actionParam: 0 4 3
   chanceMult: 10

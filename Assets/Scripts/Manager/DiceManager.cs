@@ -101,9 +101,37 @@ public class DiceManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f); // 주사위가 다 돌아갈때까지 대기
 
-        // 움직인 만큼 감소
-        InGameManager.Instance.DiceRoll(selectedDice.CompleteDice());
+        if(InGameManager.Instance.eventDice)
+        {
+            InGameManager.Instance.eventDice = false;
 
+            if(InGameManager.Instance.isUp)
+            {
+                if(selectedDice.GetDistance() >= InGameManager.Instance.eventDiceDistance)
+                {
+                    if (InGameManager.Instance.eventDiceNum == 100)
+                    {
+                        InGameManager.Instance.UpdateCarRender(2);
+                    }
+                    else
+                        InGameManager.Instance.SetDistance(InGameManager.Instance.curDistance + InGameManager.Instance.eventDiceNum);
+                }
+            }
+            else
+            {
+                if (selectedDice.GetDistance() <= InGameManager.Instance.eventDiceDistance)
+                {
+                    InGameManager.Instance.SetDistance(InGameManager.Instance.curDistance + InGameManager.Instance.eventDiceNum);
+                }
+            }
+
+            InGameManager.Instance.ExitRollEvent();
+        }
+        else
+        {
+            // 움직인 만큼 감소
+            InGameManager.Instance.DiceRoll(selectedDice.CompleteDice());
+        }
         isDiceRoll = false;
     }
 }

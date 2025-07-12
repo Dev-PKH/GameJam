@@ -10,12 +10,15 @@ public class EventActions : MonoBehaviour
 	{
 		actionMap = new Dictionary<string, Action<string>>()
 		{
-			{ "IncreaseHP", IncreaseHP },
-			{ "DecreaseHP", DecreaseHP },
-			{ "GainRelic", GainRelic },
-			{ "RemoveCard", RemoveCard },
-			{ "Escape", Escape },
-			{ "DoNothing", DoNothing }
+			{ "LimitDistance", LimitDistance },
+			{ "RandomDistance", RandomDistance },
+			{ "UpdateDistance", UpdateDistance },
+			{ "DiceRoll", DiceRoll },
+			{ "NoneAdvanture", NoneAdvanture },
+            { "HybridEvent", HybridEvent },
+            { "UpdateMoney", UpdateMoney },
+            { "UpdateSprite", UpdateSprite },
+            { "DoNothing", DoNothing }
 		};
 	}
 
@@ -23,48 +26,100 @@ public class EventActions : MonoBehaviour
 	{
 		if (actionMap.TryGetValue(actionType, out var action))
 		{
+			Debug.Log(actionType);
 			action.Invoke(param);
-		}
+			InGameManager.Instance.ExitEvent();
+        }
 		else
 		{
 			Debug.LogWarning($"[EventActions] 알 수 없는 액션 타입: {actionType}");
 		}
 	}
 
-	// 각 액션 로직 안에서만 Debug 찍힘
-	private void IncreaseHP(string param)
+
+    /// <summary>
+    ///  움직임을 제한한다.
+    /// </summary>
+    private void LimitDistance(string param)
+    {
+        int value = int.Parse(param);
+		InGameManager.Instance.limitDistance = value;
+    }
+
+	private void RandomDistance(string param)
 	{
-		int value = int.Parse(param);
-		Debug.Log($"[액션 실행] 체력 {value} 회복");
+		int num = 0;
+
+		if(UnityEngine.Random.value <= 0.5f)
+		{
+			num = -2;
+			UpdateDistance(num.ToString());
+		}
+		else
+		{
+            num = 3;
+            UpdateDistance(num.ToString());
+        }
 	}
 
-	private void DecreaseHP(string param)
+	/// <summary>
+	/// (0: 이하, 1: 이상/ 주사위 제한수(포함)/이동할거리(100이면 다른 이벤트))
+	/// ex) 0 5 3 // 5이하이면 +3
+	/// </summary>
+	/// <param name="param"></param>
+	public void DiceRoll(string param)
 	{
-		int value = int.Parse(param);
-		// 예: player.TakeDamage(value);
-		Debug.Log($"[액션 실행] 체력 {value} 감소");
+        string[] words = param.Split();
+
+		int check = int.Parse(words[0]);
+        int limit = int.Parse(words[1]);
+        int dist = int.Parse(words[2]);
+
+		InGameManager.Instance.EventRoll(check, limit, dist);
 	}
 
-	private void GainRelic(string param)
-	{
-		// 예: inventory.AddRelic(param);
-		Debug.Log($"[액션 실행] 유물 '{param}' 획득");
-	}
+    /// <summary>
+    /// 움직임을 갱신한다.
+    /// </summary>
+    private void UpdateDistance(string param)
+    {
+        int value = int.Parse(param);
+		InGameManager.Instance.SetDistance(InGameManager.Instance.curDistance + value);
+    }
 
-	private void RemoveCard(string param)
+	private void NoneAdvanture(string param)
 	{
-		// 예: cardManager.Remove(param);
-		Debug.Log($"[액션 실행] 카드 '{param}' 제거");
-	}
+        int value = int.Parse(param);
+		InGameManager.Instance.NoneAdvanture = value;
 
-	private void Escape(string _)
-	{
-		// 예: battleSystem.Flee();
-		Debug.Log("[액션 실행] 전투에서 도망침");
-	}
+    }
 
-	private void DoNothing(string _)
+	/// <summary>
+	/// 재화, 거리 순
+	/// </summary>
+	/// <param name="param"></param>
+	private void HybridEvent(string param)
 	{
-		Debug.Log("[액션 실행] 아무 일도 일어나지 않음");
+		string[] words = param.Split();
+		UpdateMoney(words[0]);
+		UpdateDistance(words[1]);
+    }
+
+	private void UpdateMoney(string param)
+	{
+        int value = int.Parse(param);
+		InGameManager.Instance.UpdateMoney(value);
+    }
+
+	private void UpdateSprite(string param)
+	{
+        int value = int.Parse(param);
+		InGameManager.Instance.UpdateCarRender(value);
+    }
+
+    private void DoNothing(string param)
+	{
+		Debug.Log("아무일이 없는 이벤트");
 	}
+	
 }
