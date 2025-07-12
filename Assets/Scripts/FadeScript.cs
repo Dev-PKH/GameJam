@@ -1,60 +1,57 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class FadeScript : MonoBehaviour
 {
-    public static FadeScript Instance { get; private set; }
+    public static FadeScript Instance;
 
-    public Image Panel;
-    float time = 0f;
-    float F_time = 1f;
+    private Image fadeImage;
+    private Coroutine currentFade;
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-    }
-
-    public void FadeIn()
-    {
-        StartCoroutine(FadeInFlow());
-    }
-    public void FadeOut()
-    {
-        StartCoroutine(FadeOutFlow());
-    }
-
-    IEnumerator FadeInFlow()
-    {
-        time = 0f;
-        Panel.gameObject.SetActive(true);
-        Color alpha = Panel.color;
-        // 페이드 인 진행 중
-        while (alpha.a < 1f)
+        // Singleton setup
+        if (Instance == null)
         {
-            time += Time.deltaTime / F_time;
-            alpha.a = Mathf.Lerp(0, 1, time);
-            Panel.color = alpha;
+            Instance = this;
+            fadeImage = GetComponent<Image>();
+        }
+    }
+
+    public void FadeIn(float duration = 1f)
+    {
+        StartFade(1f, 0f, duration);
+    }
+
+    public void FadeOut(float duration = 1f)
+    {
+        StartFade(0f, 1f, duration);
+    }
+
+    private void StartFade(float from, float to, float duration)
+    {
+        if (currentFade != null)
+            StopCoroutine(currentFade);
+
+        currentFade = StartCoroutine(FadeRoutine(from, to, duration));
+    }
+
+    private IEnumerator FadeRoutine(float from, float to, float duration)
+    {
+        float time = 0f;
+        Color color = fadeImage.color;
+
+        while (time < duration)
+        {
+            float t = time / duration;
+            float a = Mathf.Lerp(from, to, t);
+            fadeImage.color = new Color(color.r, color.g, color.b, a);
+            time += Time.deltaTime;
             yield return null;
         }
-        yield return null; 
-    }
 
-    IEnumerator FadeOutFlow()
-    {
-        time = 0f;
-        Color alpha = Panel.color;
-        // 페이드 아웃 진행 중
-        while (alpha.a > 0f)
-        {
-            time += Time.deltaTime / F_time;
-            alpha.a = Mathf.Lerp(1, 0, time);
-            Panel.color = alpha;
-            yield return null;
-        }
-        // 페이드 아웃 완료
-        Panel.gameObject.SetActive(false);
-        yield return null;
+        fadeImage.color = new Color(color.r, color.g, color.b, to);
+        currentFade = null;
     }
 }

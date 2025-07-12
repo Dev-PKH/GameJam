@@ -198,6 +198,8 @@ public class InGameManager : MonoBehaviour
     public IEnumerator ChangeMove()
     {
         // 페이드 아웃 실행
+        FadeScript.Instance.FadeOut(0.5f);
+        yield return new WaitForSeconds(1f); // 0.5초 대기후 드라이브 화면 전환
         status = GameStatus.Move;
 
         // 페이드 아웃 종료
@@ -205,12 +207,11 @@ public class InGameManager : MonoBehaviour
 
         yield return null;
 
-        // 페이드 인 실행
-
-
         DiceManager.Instance.SetDice(true);
-
         spawnPlanet.ClearList();
+
+        // 페이드 인 실행
+        FadeScript.Instance.FadeIn(0.5f);
     }
 
     /// <summary>
@@ -262,11 +263,14 @@ public class InGameManager : MonoBehaviour
         ExitMovePlanet();
 
         Debug.Log("행성 도착 완료! 이제 보상 아이템 얻어야함");
+        
         ToyManager.Instance.GetToy((int)curPlanetStatus);
 
         if (ToyManager.Instance.toyCount >= 18) yield break;
 
-        yield return new WaitForSeconds(2f);
+        FadeScript.Instance.FadeOut(0.5f);
+        yield return new WaitForSeconds(3f);
+        FadeScript.Instance.FadeIn(0.5f);
 
         exitShopButton.gameObject.SetActive(true);
 
@@ -283,6 +287,11 @@ public class InGameManager : MonoBehaviour
     public IEnumerator ChangeSelect()
     {
         // 페이드 아웃 실행
+        yield return new WaitForSeconds(1f); // 1초 대기 후 선택 행성 로직 실행
+
+
+        FadeScript.Instance.FadeOut(0.5f);
+
         status = GameStatus.Select;
 
         exitShopButton.gameObject.SetActive(false);
@@ -299,15 +308,13 @@ public class InGameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // 페이드 아웃 종료
+        FadeScript.Instance.FadeIn(0.5f);
 
         selectView.SetActive(true);
         planetRenderer.sprite = planetPrefabs[(int)curPlanetStatus].spriteRender.sprite;
 
 
         // 이벤트 다 끝나면 실행
-
-        yield return new WaitForSeconds(1f); // 1초 대기후 선택 행성 로직 실행
-
         SelectRun();
     }
 
