@@ -13,10 +13,10 @@ public enum GameStatus
 
 public enum Toys
 {
-    fidget, slinky, puzzle, icecream,
-    air, roulette, yoyo, Tamagotchi,
-    doll, magnet, horse, colourful,
-    tangram, kite, top, scab,
+    cicada, slinky, yoyo, fidget,
+    puzzle, kite, blade, flipper,
+    roulette, tamagochi, doll, horse,
+    gongii, ballon, snake, icecream
 }
 
 public class InGameManager : MonoBehaviour
@@ -307,12 +307,12 @@ public class InGameManager : MonoBehaviour
     public IEnumerator ChangeSelect()
     {
         // 페이드 아웃 실행
+        status = GameStatus.Select;
         yield return new WaitForSeconds(1f); // 1초 대기 후 선택 행성 로직 실행
 
 
         FadeScript.Instance.FadeOut(0.5f);
 
-        status = GameStatus.Select;
 
         exitShopButton.gameObject.SetActive(false);
 
@@ -354,6 +354,8 @@ public class InGameManager : MonoBehaviour
             value = value > limitDistance ? limitDistance : value;
             limitDistance = 0;
         }
+
+        if (value >= curDistance) isDefence = true;
 
         UpdateDistance(-value);
     }    
@@ -541,6 +543,7 @@ public class InGameManager : MonoBehaviour
 
     public void ExitShop()
     {
+        if (status == GameStatus.Select) return;
         StartCoroutine(ChangeSelect());
     }
 
