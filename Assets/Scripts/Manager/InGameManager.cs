@@ -101,8 +101,9 @@ public class InGameManager : MonoBehaviour
         if (Instance == null) Instance = this;
 
         moneyText.text = money.ToString();
-        curPlanetStatus = (Planets)UnityEngine.Random.Range(0, planetPrefabs.Length);
-        planetRenderer.sprite = planetPrefabs[(int)curPlanetStatus].spriteRender.sprite;
+        //curPlanetStatus = (Planets)UnityEngine.Random.Range(0, planetPrefabs.Length);
+        //planetRenderer.sprite = planetPrefabs[(int)curPlanetStatus].spriteRender.sprite;
+
     }
     void Start()
     {
