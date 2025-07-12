@@ -45,6 +45,7 @@ public class Dice : MonoBehaviour
 
     public const float Offest = 2f;
     public const float maxLine = -10f;
+    public const float maxOffDifference = 12f;
 
 
 
@@ -68,9 +69,18 @@ public class Dice : MonoBehaviour
                 transform.position += Vector3.down * DiceManager.Instance.diceSpeed * Time.deltaTime;
             }*/
 
-            if (transform.position.y <= maxLine)
+            /*if (transform.position.y <= maxLine)
             {
                 transform.position = new Vector3(0f, Offest, 0f); // 정확히 리셋
+            }
+            else
+            {
+                transform.position += Vector3.down * DiceManager.Instance.diceSpeed * Time.deltaTime;
+            }*/
+
+            if (transform.position.y <= maxLine)
+            {
+                transform.position += new Vector3(0f, maxOffDifference, 0f); // 상대적인 리셋
             }
             else
             {
