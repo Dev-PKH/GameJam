@@ -43,8 +43,8 @@ public class Dice : MonoBehaviour
     //public int upgradeIndex = 0; // 강화 인덱스
     public int currentEyes = 0; // 현재 주사위 눈의 개수
 
-    public const float Offest = 2f;
-    public const float maxLine = -10f;
+    public const float Offest = 1f;
+    public const float maxLine = -11f;
     public const float maxOffDifference = 12f;
 
 
@@ -89,6 +89,13 @@ public class Dice : MonoBehaviour
         }
 
     }
+    public void HardAdjustDice()
+    {
+        // 주사위 굴리기 전 위치를 바로잡아 이상한 모습을 방지
+        float snappedY = Mathf.Round(transform.position.y);
+        Vector3 snappedPos = new Vector3(transform.position.x, snappedY, transform.position.z);
+        transform.position = snappedPos;
+    }
 
     public void AdjustDice(float adjustValue)
     {
@@ -96,7 +103,7 @@ public class Dice : MonoBehaviour
         Vector3 newPos = transform.position + new Vector3(0, adjustValue, 0);
 
         // 스냅 처리: 가장 가까운 정수 위치로 정렬
-        float snappedY = Mathf.Round(newPos.y / unit) * unit;
+        float snappedY = Mathf.Round(newPos.y / unit) * unit - 3f;
 
         Vector3 snappedPos = new Vector3(newPos.x, snappedY, newPos.z);
 
@@ -106,7 +113,7 @@ public class Dice : MonoBehaviour
 
     public int CompleteDice()
     {
-        Debug.Log(status + "다이스 선택");
+        Debug.Log(status + " 다이스 선택");
         return GetDistance();
     }
 
@@ -126,10 +133,7 @@ public class Dice : MonoBehaviour
                     InGameManager.Instance.UpdateMoney(1);
                     break;
                 case EyesStatus.triangle:
-                    if (Random.Range(0, 1) > 0.5)
-                    {
-                        value += 2;
-                    }
+                    value += (int)Mathf.Round(Random.Range(-3, 3));
                     break;
                 case EyesStatus.star:
                     doubleMult += 1;
@@ -169,7 +173,7 @@ public class Dice : MonoBehaviour
                         diceEyes[i].color = Color.blue;
                         break;
                     case DiceColor.purple:
-                        diceEyes[i].color = new Color(0.5f, 0, 0.5f,1f);
+                        diceEyes[i].color = new Color(0.6f, 0, 0.8f,1f);
                         break;
                     case DiceColor.yellow:
                         diceEyes[i].color = Color.yellow;

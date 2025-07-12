@@ -9,6 +9,7 @@ public class DiceManager : MonoBehaviour
 
     // Dice
     public Dice[] dices;
+    public DiceChance[] dChances;
     public GameObject diceSlot;
     public GameObject diceButton;
 
@@ -64,7 +65,21 @@ public class DiceManager : MonoBehaviour
         if (isDiceRoll) return;
         if (InGameManager.Instance.isDefence) return;
 
+        if(!InGameManager.Instance.eventDice) // 이동을 위한 주사위 굴리기 일 때
+        {
+            InGameManager.Instance.curRollCnt--;
+            foreach (var dChance in dChances)
+            {
+                dChance.UpdateExistence();
+            }
+        }
+        
         isDiceRoll = true;
+
+        foreach (var dice in dices) // 즉각적인 주사위 면 snap
+        {
+            dice.HardAdjustDice();
+        }
 
         diceSpeed = Random.Range(minSpeed, maxSpeed);
         StartCoroutine(IDiceRoll());
@@ -98,7 +113,7 @@ public class DiceManager : MonoBehaviour
             }
         }
 
-        foreach (var dice in dices)
+        foreach (var dice in dices) // 부드러운 주사위 면 snap
         {
             dice.AdjustDice(-selectedDice.transform.position.y);
         }

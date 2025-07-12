@@ -64,6 +64,7 @@ public class InGameManager : MonoBehaviour
 
     // 주사위 정보
     public Dice[] dices;
+    public DiceChance[] dChances;
     public bool isDefence = false;
 
 
@@ -122,7 +123,12 @@ public class InGameManager : MonoBehaviour
     private void ExitMovePlanet() // 행성 선택 진입
     {
         moveView.SetActive(false);
-        rollCountText.gameObject.SetActive(false);
+        //rollCountText.gameObject.SetActive(false);
+        foreach (var dChance in dChances)
+        {
+            dChance.gameObject.SetActive(false);
+        }
+        
         moveViewObject.ClearList();
         DiceManager.Instance.SetDice(false);
     }
@@ -136,7 +142,7 @@ public class InGameManager : MonoBehaviour
 
         int value = 0, min = 0;
         (value, min) = GetDistance();
-        stepDistance = Mathf.RoundToInt(4f * value / 6f + 2.4f * Mathf.Sqrt(completeCount)) - min;
+        stepDistance = Mathf.RoundToInt(3.5f * value / 6f + 2.4f * Mathf.Sqrt(completeCount)) - min;
 
         Debug.Log("계산 값 : " + stepDistance);
 
@@ -168,7 +174,11 @@ public class InGameManager : MonoBehaviour
         carRenderer.sprite = eventSprite[0];
         selectView.SetActive(false);
 
-        rollCountText.gameObject.SetActive(true);
+        //rollCountText.gameObject.SetActive(true);
+        foreach (var dChance in dChances)
+        {
+            dChance.gameObject.SetActive(true);
+        }
         moveView.SetActive(true);
         curRollCnt = setRollCnt;
         rollCountText.text = curRollCnt.ToString();
@@ -325,9 +335,7 @@ public class InGameManager : MonoBehaviour
     /// <param name="value"></param>
     public void DiceRoll(int value)
     {
-        curRollCnt--;
         rollCountText.text = curRollCnt.ToString();
-
         if (curRollCnt == 0) isDefence = true;
 
         if (limitDistance != 0)
