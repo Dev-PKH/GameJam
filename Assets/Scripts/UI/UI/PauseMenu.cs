@@ -30,12 +30,9 @@ public class PauseMenu : UISelector
     public void ResumeButton()
     {
         //UIManager.Instance.ChangePanel(UIManager.Instance.gameplayPanel);
+        UIManager.Instance.TopPaneHide(); // 일시정지 비활성화
+        GameManager.Instance.PauseChange();
         Debug.Log("계속하기");
-    }
-
-    public void GiveUpButton()
-    {
-        Debug.Log("포기하기");
     }
 
     public void SettingButton()

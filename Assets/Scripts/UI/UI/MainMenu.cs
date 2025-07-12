@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,6 +41,7 @@ public class MainMenu : UISelector
 
     public void ExitButton()
     {
+        Application.Quit();
         Debug.Log("게임 종료");
     }
 
