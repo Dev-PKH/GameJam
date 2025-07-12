@@ -2286,8 +2286,9 @@ MonoBehaviour:
   curToysStatus: 0
   curDistance: 0
   stepDistance: 0
-  completeCount: 0
+  completeCount: 30
   spawnPlanet: {fileID: 1740446693}
+  outPlanet: {fileID: 21300000, guid: 2e7b7e986c2a17942b75e307309bdec8, type: 3}
   moveViewObject: {fileID: 1375867913}
   carRenderer: {fileID: 1025937526}
   planetRenderer: {fileID: 755174350}
@@ -2309,7 +2310,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 49f80cc5f2b3a9c4f9ac22c591104e3c, type: 3}
   - {fileID: 21300000, guid: 932030dca7cc4394b9eff6a6a6ac3c2e, type: 3}
   - {fileID: 21300000, guid: ffd3c478e6fb5274084a6e2fae179dd3, type: 3}
-  - {fileID: 21300000, guid: 49f80cc5f2b3a9c4f9ac22c591104e3c, type: 3}
+  - {fileID: 21300000, guid: d7ebdc140a05aa14e99deff2a24d9258, type: 3}
   limitDistance: 0
   NoneAdvanture: 0
   eventDice: 0

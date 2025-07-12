@@ -49,4 +49,10 @@ public class ToyManager : MonoBehaviour
         checkToy[index] = true;
         toyPhoto[index].sprite = toys[index];
     }
+
+    public void LostToy(int index)
+    {
+        checkToy[index] = false;
+        toyPhoto[index].sprite = lockToy;
+    }
 }

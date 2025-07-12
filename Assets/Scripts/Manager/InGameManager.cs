@@ -44,6 +44,8 @@ public class InGameManager : MonoBehaviour
 
     public SpawnPlanet spawnPlanet;
 
+    public Sprite outPlanet; // 외딴섬 이미지
+
     // 움직임 화면
     public MoveView moveViewObject;
     public SpriteRenderer carRenderer;
@@ -96,7 +98,8 @@ public class InGameManager : MonoBehaviour
         if (Instance == null) Instance = this;
 
         moneyText.text = money.ToString();
-        planetRenderer.sprite = planetPrefabs[UnityEngine.Random.Range(0, planetPrefabs.Length)].spriteRender.sprite;
+        curPlanetStatus = (Planets)UnityEngine.Random.Range(0, planetPrefabs.Length);
+        planetRenderer.sprite = planetPrefabs[(int)curPlanetStatus].spriteRender.sprite;
     }
     void Start()
     {
@@ -160,6 +163,7 @@ public class InGameManager : MonoBehaviour
 
     public void EnterMovePlanet() // 행성 이동 진입
     {
+        carRenderer.sprite = eventSprite[0];
         selectView.SetActive(false);
 
         rollCountText.gameObject.SetActive(true);
@@ -185,10 +189,6 @@ public class InGameManager : MonoBehaviour
             // 페이드 아웃 하고나서
             StartCoroutine(ChangeMove());
         }
-        else
-        {
-
-        }
     }
 
 
@@ -210,7 +210,40 @@ public class InGameManager : MonoBehaviour
         spawnPlanet.ClearList();
     }
 
-    //public 
+    /// <summary>
+    /// 왜딴섬에 감
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator ChangeOut()
+    {
+        List<int> lostToyList = new List<int>();
+
+        for(int i=0; i< ToyManager.Instance.checkToy.Length; i++)
+        {
+            if (ToyManager.Instance.checkToy[i]) lostToyList.Add(i);
+        }
+
+        int index = UnityEngine.Random.Range(0, lostToyList.Count);
+        ToyManager.Instance.LostToy(index);
+
+        completeCount -= 2;
+        if (completeCount < 0) completeCount = 0;
+
+        // 페이드인 시작
+        yield return new WaitForSeconds(1f);
+
+        ExitMovePlanet();
+
+
+        selectView.SetActive(true);
+        carRenderer.sprite = eventSprite[4]; // 차 교체
+        planetRenderer.sprite = outPlanet;
+        status = GameStatus.Select;
+
+        //yield return new WaitForSeconds(1f); // 1초 대기후 선택 행성 로직 실행
+
+        SelectRun();
+    }
 
     public IEnumerator ChangeShop()
     {
@@ -256,23 +289,10 @@ public class InGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        // 페이드 아웃 종료
 
         selectView.SetActive(true);
         planetRenderer.sprite = planetPrefabs[(int)curPlanetStatus].spriteRender.sprite;
-        // 페이드 아웃 종료
-
-
-
-        // 페이드 인 실행
-
-        /*if(checkMemorial)
-        {
-            Debug.Log("행성 도착 완료! 이제 보상 아이템 얻어야함");
-        }*/
-
-        // 페이드 아웃 실행
-
-        // 강화(상점) 실행
 
 
         // 이벤트 다 끝나면 실행
@@ -336,7 +356,7 @@ public class InGameManager : MonoBehaviour
     /// </summary>
     public void OutPlanet()
     {
-        Debug.Log("주사위 다굴렸다.");
+        StartCoroutine(ChangeOut());
     }
 
     /// <summary>
