@@ -121,6 +121,7 @@ public class GetDice : MonoBehaviour
 
     public void ViewDice(int index)
     {
+        if (GameManager.Instance.IsPause) return;
         status = (DiceStatus)index;
         CheckDice(index);
         InGameManager.Instance.normalShopButton.gameObject.SetActive(false);
@@ -134,6 +135,7 @@ public class GetDice : MonoBehaviour
     public void UpgradeViewButton(int index)
     {
         //if(co)
+        if (GameManager.Instance.IsPause) return;
         InGameManager.Instance.SetShopButton((int)status, index);
         /*Dice dice = InGameManager.Instance.dices[(int)status];
 
@@ -148,6 +150,7 @@ public class GetDice : MonoBehaviour
 
     public void NormalEyes()
     {
+        if (GameManager.Instance.IsPause) return;
         if (InGameManager.Instance.GetNoramlEyesValue() > InGameManager.Instance.money) return;
 
         InGameManager.Instance.BuyNormalShopEyes((int)status);
@@ -155,6 +158,7 @@ public class GetDice : MonoBehaviour
 
     public void SpecialEyes()
     {
+        if (GameManager.Instance.IsPause) return;
         if (InGameManager.Instance.money < 3) return;
         InGameManager.Instance.BuySpecialShopEyes((int)status);
     }

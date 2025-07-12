@@ -541,6 +541,7 @@ public class InGameManager : MonoBehaviour
     public void ExitShop()
     {
         if (status == GameStatus.Select) return;
+        if (GameManager.Instance.IsPause) return;
         StartCoroutine(ChangeSelect());
     }
 

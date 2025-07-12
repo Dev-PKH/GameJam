@@ -69,6 +69,7 @@ public class Planet : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (GameManager.Instance.IsPause) return;
         InGameManager.Instance.SetPlanet(this);
     }
 

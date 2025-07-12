@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,14 @@ public class ToyManager : MonoBehaviour
     [Header("Sprites")]
     public Image[] toyPhoto; // 사진 넣는곳
     public Sprite[] toys;
+    public Sprite[] inGameToySprite;
     public Sprite lockToy;
+
+    [Header("Texts")]
+    public TextMeshProUGUI[] toyTexts;
+
+    public string[] toyNames;
+    public string lockToyName = "???";
 
     // Toy
     public bool[] checkToy;
@@ -30,6 +38,7 @@ public class ToyManager : MonoBehaviour
         {
             toyPhoto[i].sprite = lockToy;
             checkToy[i] = false;
+            toyTexts[i].text = lockToyName;
         }
         toyCount = 0;
     }
@@ -49,7 +58,8 @@ public class ToyManager : MonoBehaviour
     {
         if (checkToy[index]) return;
         checkToy[index] = true;
-        toyPhoto[index].sprite = toys[index];
+        toyPhoto[index].sprite = inGameToySprite[index];
+        toyTexts[index].text = toyNames[index];
         toyCount++;
         if(toyCount == 18)
         {
@@ -62,6 +72,7 @@ public class ToyManager : MonoBehaviour
         toyCount--;
         checkToy[index] = false;
         toyPhoto[index].sprite = lockToy;
+        toyTexts[index].text = lockToyName;
         if (toyCount < 0) toyCount = 0;
     }
 }

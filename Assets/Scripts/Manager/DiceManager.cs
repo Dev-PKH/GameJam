@@ -64,8 +64,9 @@ public class DiceManager : MonoBehaviour
     {
         if (isDiceRoll) return;
         if (InGameManager.Instance.isDefence) return;
+        if (GameManager.Instance.IsPause) return;
 
-        if(!InGameManager.Instance.eventDice) // 이동을 위한 주사위 굴리기 일 때
+        if (!InGameManager.Instance.eventDice) // 이동을 위한 주사위 굴리기 일 때
         {
             InGameManager.Instance.curRollCnt--;
             foreach (var dChance in dChances)
