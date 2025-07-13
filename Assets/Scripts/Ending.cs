@@ -39,13 +39,13 @@ public class Ending : MonoBehaviour
         FadeScript.Instance.FadeOut(0.5f);
         yield return new WaitForSeconds(1.5f);
 
+        text.color = new Color(1, 1, 1, 0);
         UIManager.Instance.InitializePannel();
         UIManager.Instance.AddPanel(mainMenu);
-        SoundManager.instance.PlayBGM(GameplaySound.Shop);
+        SoundManager.instance.StopGameBGM();
         GameManager.Instance.StatusChange();
         UIManager.Instance.TopPanelShow();
         LoadSceneManager.Instance.UnLoadScene(SceneName.GameClear);
-        text.color = new Color(1, 1, 1, 0);
 
         FadeScript.Instance.FadeIn(0.5f);
     }

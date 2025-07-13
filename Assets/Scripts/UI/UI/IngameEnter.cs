@@ -41,7 +41,7 @@ public class IngameEnter : MonoBehaviour
 
         UIManager.Instance.InitializePannel();
         UIManager.Instance.AddPanel(UIManager.Instance.PausePanel);
-        SoundManager.instance.PlayBGM(GameplaySound.Battle);
+        SoundManager.instance.PlayBGM(GameplaySound.Main);
         //LoadSceneManager.Instance.ChangeScene(SceneName.Ingame, SceneName.MainMenu);
         LoadSceneManager.Instance.LoadScene(SceneName.Ingame); // 현재는 1이 Ingme Test임
         // 추후에는 이 스크립트는 메인 메뉴 전용 이벤트임으로 LoadSceneManager.Instance.ChangeScene(SceneName.Ingame, SceneName.MainMenu)
@@ -59,7 +59,7 @@ public class IngameEnter : MonoBehaviour
 
         UIManager.Instance.InitializePannel();
         UIManager.Instance.AddPanel(mainMenu);
-        SoundManager.instance.PlayBGM(GameplaySound.Shop);
+        SoundManager.instance.StopGameBGM();
         LoadSceneManager.Instance.UnLoadScene(SceneName.Ingame);
         GameManager.Instance.StatusChange();
         UIManager.Instance.TopPanelShow();
