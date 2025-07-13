@@ -24,6 +24,7 @@ public class Ending : MonoBehaviour
     void Start()
     {
         StartCoroutine(FadeInTextWithDelay());
+        SoundManager.instance.StopGameBGMWithFade();
     }
 
     // Update is called once per frame
@@ -37,9 +38,9 @@ public class Ending : MonoBehaviour
     public IEnumerator StartFade()
     {
         FadeScript.Instance.FadeOut(0.5f);
+        text.color = new Color(1, 1, 1, 0);
         yield return new WaitForSeconds(1.5f);
 
-        text.color = new Color(1, 1, 1, 0);
         UIManager.Instance.InitializePannel();
         UIManager.Instance.AddPanel(mainMenu);
         SoundManager.instance.StopGameBGM();

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -289,6 +290,7 @@ public class InGameManager : MonoBehaviour
         FadeScript.Instance.FadeOut(0.5f);
         yield return new WaitForSeconds(3f);
         FadeScript.Instance.FadeIn(0.5f);
+        Description.SetActive(true);
 
         exitShopButton.gameObject.SetActive(true);
 
@@ -307,10 +309,12 @@ public class InGameManager : MonoBehaviour
     {
         // 페이드 아웃 실행
         status = GameStatus.Select;
-        yield return new WaitForSeconds(1f); // 1초 대기 후 선택 행성 로직 실행
-
-
         FadeScript.Instance.FadeOut(0.5f);
+
+
+        yield return new WaitForSeconds(1f); // 1초 대기 후 선택 행성 로직 실행
+        Description.SetActive(false);
+
 
 
         exitShopButton.gameObject.SetActive(false);
@@ -439,13 +443,13 @@ public class InGameManager : MonoBehaviour
         eventController.eventManager.gameObject.SetActive(true);
         eventController.TriggerRandomEvent();
         SoundManager.instance.PlaySFX(SFXSound.Event);
-        Description.SetActive(true);
+        //Description.SetActive(true);
     }
 
     public void ExitEvent()
     {
         eventController.eventManager.gameObject.SetActive(false);
-        Description.SetActive(false);
+        //Description.SetActive(false);
         DiceManager.Instance.SetDice(true);
     }
 

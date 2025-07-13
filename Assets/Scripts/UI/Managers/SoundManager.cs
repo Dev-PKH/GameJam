@@ -56,7 +56,9 @@ public class SoundManager : MonoBehaviour
 	private void Start()
 	{
 		//PlayBGM(LobbySound.Track1);
-	}
+		
+
+    }
 	private void Update()
 	{
 
@@ -103,4 +105,25 @@ public class SoundManager : MonoBehaviour
 
 		mixer.SetFloat(soundType.ToString(), volumeInDb);
 	}
+
+    public void StopGameBGMWithFade(float fadeDuration = 3f)
+    {
+        StartCoroutine(FadeOutBGM(fadeDuration));
+    }
+
+    private IEnumerator FadeOutBGM(float duration)
+    {
+        float startVolume = gameplayAS.volume;
+
+        float time = 0f;
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            gameplayAS.volume = Mathf.Lerp(startVolume, 0f, time / duration);
+            yield return null;
+        }
+
+        gameplayAS.Stop();
+        gameplayAS.volume = startVolume; // 다음 재생 대비 원상복구
+    }
 }

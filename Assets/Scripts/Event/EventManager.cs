@@ -6,7 +6,7 @@ public class EventManager : MonoBehaviour
 {
 	[Header("UI Components")]
 	[SerializeField] private TextMeshProUGUI titleText;
-	[SerializeField] private Image eventImage;
+	//[SerializeField] private Image eventImage;
 	[SerializeField] private TextMeshProUGUI descriptionText;
 	[SerializeField] private Button[] choiceButtons;
 
@@ -17,7 +17,7 @@ public class EventManager : MonoBehaviour
 	{
 		titleText.text = data.title;
 		descriptionText.text = data.description;
-		eventImage.sprite = data.image;
+		//eventImage.sprite = data.image;
 
 		for (int i = 0; i < choiceButtons.Length; i++)
 		{
