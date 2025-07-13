@@ -4910,10 +4910,10 @@ MonoBehaviour:
   sfxClips:
   - {fileID: 8300000, guid: 9bf900dc615c4314ab0da3a51fb91e93, type: 3}
   - {fileID: 8300000, guid: 30af27118e8572a4991b6a39814a69c6, type: 3}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: bb1c92f1a029b2b41b6d131772d6ffa3, type: 3}
   gameplayAS: {fileID: 1326070936}
   lobbyAS: {fileID: 1184151092}
-  sfxAS: {fileID: 0}
+  sfxAS: {fileID: 428352865}
 --- !u!1 &670414803
 GameObject:
   m_ObjectHideFlags: 0

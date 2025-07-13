@@ -84,6 +84,7 @@ public class DiceManager : MonoBehaviour
 
         diceSpeed = Random.Range(minSpeed, maxSpeed);
         StartCoroutine(IDiceRoll());
+        SoundManager.instance.PlaySFX(SFXSound.Rolling);
     }
 
     public IEnumerator IDiceRoll()

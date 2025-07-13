@@ -86,9 +86,9 @@ public class SoundManager : MonoBehaviour
 		gameplayAS.Stop();
 	}
 
-	public void PlaySFX(SFXSound battleSound)
+	public void PlaySFX(SFXSound sfxSound)
 	{
-        sfxAS.PlayOneShot(sfxClips[(int)battleSound]);
+        sfxAS.PlayOneShot(sfxClips[(int)sfxSound]);
 	}
 
 	public void SetVolume(SoundType soundType, float volume)

@@ -210,6 +210,7 @@ public class InGameManager : MonoBehaviour
     public IEnumerator ChangeMove()
     {
         // 페이드 아웃 실행
+        SoundManager.instance.PlaySFX(SFXSound.Booting);
         FadeScript.Instance.FadeOut(0.5f);
         yield return new WaitForSeconds(1f); // 0.5초 대기후 드라이브 화면 전환
 
@@ -436,6 +437,7 @@ public class InGameManager : MonoBehaviour
     {
         eventController.eventManager.gameObject.SetActive(true);
         eventController.TriggerRandomEvent();
+        SoundManager.instance.PlaySFX(SFXSound.Event);
     }
 
     public void ExitEvent()
