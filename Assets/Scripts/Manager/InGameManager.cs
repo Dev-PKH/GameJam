@@ -68,7 +68,8 @@ public class InGameManager : MonoBehaviour
 
 
     // 이벤트
-    public EventController eventController; 
+    public EventController eventController;
+    public GameObject Description;
 
     public Sprite[] eventSprite;
     public int limitDistance = 0;
@@ -438,11 +439,13 @@ public class InGameManager : MonoBehaviour
         eventController.eventManager.gameObject.SetActive(true);
         eventController.TriggerRandomEvent();
         SoundManager.instance.PlaySFX(SFXSound.Event);
+        Description.SetActive(true);
     }
 
     public void ExitEvent()
     {
         eventController.eventManager.gameObject.SetActive(false);
+        Description.SetActive(false);
         DiceManager.Instance.SetDice(true);
     }
 

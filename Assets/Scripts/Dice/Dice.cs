@@ -81,6 +81,7 @@ public class Dice : MonoBehaviour
             if (transform.position.y <= maxLine)
             {
                 transform.position += new Vector3(0f, maxOffDifference, 0f); // 상대적인 리셋
+                SoundManager.instance.PlaySFX(SFXSound.Rolling);
             }
             else
             {
