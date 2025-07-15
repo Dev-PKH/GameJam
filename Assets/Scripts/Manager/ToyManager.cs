@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -32,7 +32,7 @@ public class ToyManager : MonoBehaviour
     }
 
     // 장난감 초기화
-    private void InitToy()
+    public void InitToy()
     {
         for(int i=0; i<toyPhoto.Length; i++)
         {

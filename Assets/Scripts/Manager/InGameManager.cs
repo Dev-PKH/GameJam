@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -35,7 +35,6 @@ public class InGameManager : MonoBehaviour
     public Planet[] planetPrefabs; // 행성 프리펩 종류들
 
     public Planets curPlanetStatus;
-    public Toys curToysStatus;
 
     public int curDistance; // 현재 남은 거리
 
@@ -58,8 +57,8 @@ public class InGameManager : MonoBehaviour
     public int money = 5;
     
 
-    public TextMeshPro rollCountText;
-    public TextMeshPro moneyText;
+    public TextMeshProUGUI rollCountText;
+    public TextMeshProUGUI moneyText;
     public const int completeMoney = 2; // 행성 도달 완료
 
     // 주사위 정보
@@ -83,7 +82,6 @@ public class InGameManager : MonoBehaviour
 
     //상점
     public Toys currentToy;
-    public bool[] hasToys = new bool[16];
     public Sprite[] eyeValues;
     public GetDice[] diceShop;
     public GetDice selectedShop;
@@ -145,6 +143,7 @@ public class InGameManager : MonoBehaviour
         int value = 0, min = 0;
         (value, min) = GetDistance();
         stepDistance = Mathf.RoundToInt(3.5f * value / 6f + 2.4f * Mathf.Sqrt(completeCount)) - min;
+        // 주사위 평균 * 
 
         Debug.Log("계산 값 : " + stepDistance);
 
@@ -154,7 +153,7 @@ public class InGameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 도합과 최소값 반환
+    /// 도합과 도합 중 최솟값 반환
     /// </summary>
     /// <returns></returns>
     public (int,int) GetDistance()
@@ -195,7 +194,6 @@ public class InGameManager : MonoBehaviour
     {
         //curPlanet = planet.planetStatus;
         curPlanetStatus = planet.planetStatus;
-        curToysStatus = planet.planetToys;
 
         // 행성 선택이 이동중이 아닐 경우
         if (status != GameStatus.Move)
@@ -212,11 +210,12 @@ public class InGameManager : MonoBehaviour
     public IEnumerator ChangeMove()
     {
         // 페이드 아웃 실행
-        SoundManager.instance.PlaySFX(SFXSound.Booting);
         FadeScript.Instance.FadeOut(0.5f);
+        SoundManager.instance.PlaySFX(SFXSound.Booting);
+        status = GameStatus.Move;
+
         yield return new WaitForSeconds(1f); // 0.5초 대기후 드라이브 화면 전환
 
-        status = GameStatus.Move;
 
         EnterMovePlanet();
 
@@ -562,6 +561,7 @@ public class InGameManager : MonoBehaviour
     public IEnumerator ChangeGameClear()
     {
         FadeScript.Instance.FadeOut(0.5f);
+        GameManager.Instance.StatusChange(SystemStatus.Ending);
 
         yield return new WaitForSeconds(1f);
         LoadSceneManager.Instance.ChangeScene(SceneName.GameClear, SceneName.Ingame);

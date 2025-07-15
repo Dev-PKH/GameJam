@@ -1,24 +1,35 @@
-﻿using System.Collections;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static System.Net.Mime.MediaTypeNames;
 
 public class Ending : MonoBehaviour
 {
     public MainMenu mainMenu;
+    public PauseMenu pauseMenu;
 
     public Button button;
     public TextMeshProUGUI text;
 
     public float fadeDuration = 3f;
 
+
     private void Awake()
     {
         mainMenu = FindObjectOfType<MainMenu>();
+        pauseMenu = FindObjectOfType<PauseMenu>();
         button.interactable = false;
         text.color = new Color(1, 1, 1, 0);
+
+
+        pauseMenu.OnMainMenuEnter += PauseMenu_OnMainMenuEnter;
+    }
+
+    private void PauseMenu_OnMainMenuEnter(object sender, EventArgs e)
+    {
+        if (GameManager.Instance.Status == SystemStatus.Ending) MainMenuEnter();
     }
 
     void Start()
@@ -39,12 +50,13 @@ public class Ending : MonoBehaviour
     {
         FadeScript.Instance.FadeOut(0.5f);
         text.color = new Color(1, 1, 1, 0);
+        ToyManager.Instance.InitToy();
         yield return new WaitForSeconds(1.5f);
 
         UIManager.Instance.InitializePannel();
         UIManager.Instance.AddPanel(mainMenu);
         SoundManager.instance.StopGameBGM();
-        GameManager.Instance.StatusChange();
+        GameManager.Instance.StatusChange(SystemStatus.Lobby);
         UIManager.Instance.TopPanelShow();
         LoadSceneManager.Instance.UnLoadScene(SceneName.GameClear);
 

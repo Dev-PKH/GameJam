@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -114,7 +114,7 @@ public class Dice : MonoBehaviour
 
     public int CompleteDice()
     {
-        Debug.Log(status + " 다이스 선택");
+        //Debug.Log(status + " 다이스 선택");
         return GetDistance();
     }
 

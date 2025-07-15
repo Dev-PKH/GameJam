@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -28,10 +28,10 @@ public class SpawnPlanet : MonoBehaviour
 
     public void SpawnPlanets(int cnt, float distance, float steps)
     {
-        StartCoroutine(ISpanwPlanets(cnt, distance, steps));
+        StartCoroutine(ISpawnPlanets(cnt, distance, steps));
     }
 
-    public IEnumerator ISpanwPlanets(int cnt, float distance, float steps)
+    public IEnumerator ISpawnPlanets(int cnt, float distance, float steps)
     {
         // 1. 중복 없는 랜덤 인덱스 리스트 생성
         List<int> prefabIndices = new List<int>();

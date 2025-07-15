@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
@@ -34,42 +34,17 @@ public class Planet : MonoBehaviour
     public TextMeshPro tmp;
 
     public Planets planetStatus;
-    public Toys planetToys;
     public int distance;
 
     public Transform spriteTransform;
     public SpriteRenderer spriteRender;
     public SpriteRenderer toyIcon;
 
-    private void Awake()
-    {
-       
-    }
-
-    private void OnEnable()
-    {
-        
-    }
-
-    private void OnDisable()
-    {
-
-    }
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnMouseDown()
     {
-        if (GameManager.Instance.IsPause) return;
+        // 일단 Select가 아닐때는 클릭 못하는게 논리적으로는 맞는데 안전하게 할거면
+        // 이 함수 실행이 SetPlane이고 Move일때만 하니까 Move가 아니면으로 바꾸는게 실행엔 문제가 없을듯
+        if (GameManager.Instance.IsPause || InGameManager.Instance.status != GameStatus.Select) return;
         InGameManager.Instance.SetPlanet(this);
     }
 

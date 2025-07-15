@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +11,7 @@ public class MainMenu : UISelector
     [SerializeField] private Button optionButton;
 
     public event EventHandler OnIngameEnter;
+
 
     private void Start()
     {
