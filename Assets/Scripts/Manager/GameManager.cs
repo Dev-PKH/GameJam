@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
                     if (UIManager.Instance.PannelCount() == 1) // 일시정지만 남은 경우
                     {
                         UIManager.Instance.TopPaneHide(); // 일시정지 비활성화
-                        PauseChange(); // 일시정지 비활성화
+                        PauseChange(false); // 일시정지 비활성화
                     }
                     else
                     {
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     UIManager.Instance.TopPanelShow(); // 현재 일시정지 화면 활성화.
-                    PauseChange(); // 일시정지 활성화
+                    PauseChange(true); // 일시정지 활성화
                 }
             }
 
@@ -103,8 +103,8 @@ public class GameManager : MonoBehaviour
         Status = status;
     }
 
-    public void PauseChange()
+    public void PauseChange(bool status)
     {
-        IsPause = !IsPause;
+        IsPause = status;
     }
 }

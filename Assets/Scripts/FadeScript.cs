@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -8,6 +8,8 @@ public class FadeScript : MonoBehaviour
 
     private Image fadeImage;
     private Coroutine currentFade;
+
+    public bool isFadeCheck { get; private set; } // 페이드 아웃 진행중인지 체크 변수
 
     private void Awake()
     {
@@ -26,6 +28,8 @@ public class FadeScript : MonoBehaviour
 
     public void FadeOut(float duration = 1f)
     {
+        if (isFadeCheck) return;
+        isFadeCheck = true;
         StartFade(0f, 1f, duration);
     }
 
@@ -53,5 +57,6 @@ public class FadeScript : MonoBehaviour
 
         fadeImage.color = new Color(color.r, color.g, color.b, to);
         currentFade = null;
+        isFadeCheck = false;
     }
 }

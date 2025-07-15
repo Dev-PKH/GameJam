@@ -15,6 +15,7 @@ public class Ending : MonoBehaviour
 
     public float fadeDuration = 3f;
 
+    public bool buttonCheck = false;
 
     private void Awake()
     {
@@ -23,7 +24,7 @@ public class Ending : MonoBehaviour
         button.interactable = false;
         text.color = new Color(1, 1, 1, 0);
 
-
+        pauseMenu.OnMainMenuEnter -= PauseMenu_OnMainMenuEnter;
         pauseMenu.OnMainMenuEnter += PauseMenu_OnMainMenuEnter;
     }
 
@@ -49,6 +50,7 @@ public class Ending : MonoBehaviour
     public IEnumerator StartFade()
     {
         FadeScript.Instance.FadeOut(0.5f);
+        UIManager.Instance.TopPaneHide();
         text.color = new Color(1, 1, 1, 0);
         ToyManager.Instance.InitToy();
         yield return new WaitForSeconds(1.5f);
@@ -65,6 +67,8 @@ public class Ending : MonoBehaviour
 
     public void MainMenuEnter()
     {
+        if (buttonCheck) return;
+        buttonCheck = true;
         StartCoroutine(StartFade());
     }
 
@@ -73,7 +77,7 @@ public class Ending : MonoBehaviour
         yield return new WaitForSeconds(1f); // 시작 후 1초 대기
 
         float timer = 0f;
-        while (timer < fadeDuration)
+        while (timer < fadeDuration && !buttonCheck)
         {
             timer += Time.deltaTime;
             float alpha = Mathf.Clamp01(timer / fadeDuration);

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,7 +31,7 @@ public class PauseMenu : UISelector
     {
         //UIManager.Instance.ChangePanel(UIManager.Instance.gameplayPanel);
         UIManager.Instance.TopPaneHide(); // 일시정지 비활성화
-        GameManager.Instance.PauseChange();
+        GameManager.Instance.PauseChange(false);
         Debug.Log("계속하기");
     }
 
@@ -44,11 +44,13 @@ public class PauseMenu : UISelector
     public void MainMenuButton()
     {
         OnMainMenuEnter?.Invoke(this, EventArgs.Empty);
+        GameManager.Instance.PauseChange(false);
     }
 
     public override void Back()
     {
         UIManager.Instance.TopPaneHide();
+        GameManager.Instance.PauseChange(false);
         //base.Back();
     }
 }

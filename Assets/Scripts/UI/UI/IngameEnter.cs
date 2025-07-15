@@ -47,6 +47,8 @@ public class IngameEnter : MonoBehaviour
         LoadSceneManager.Instance.LoadScene(SceneName.Ingame); 
 
         yield return new WaitForSeconds(1.5f);
+        UIManager.Instance.TopPaneHide();
+        GameManager.Instance.PauseChange(false);
         FadeScript.Instance.FadeIn(0.5f);
     }
 
