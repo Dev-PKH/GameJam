@@ -565,9 +565,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 0}
+  pauseMenu: {fileID: 0}
   button: {fileID: 1194584015}
   text: {fileID: 11158993}
   fadeDuration: 3
+  buttonCheck: 0
 --- !u!4 &1393067431
 Transform:
   m_ObjectHideFlags: 0
