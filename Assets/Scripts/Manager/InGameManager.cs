@@ -348,7 +348,7 @@ public class InGameManager : MonoBehaviour
     public void DiceRoll(int value)
     {
         rollCountText.text = curRollCnt.ToString();
-        if (curRollCnt == 0) isDefence = true;
+        //if (curRollCnt == 0) isDefence = true;
 
         if (limitDistance != 0)
         {
@@ -357,7 +357,7 @@ public class InGameManager : MonoBehaviour
             limitDistance = 0;
         }
 
-        if (value >= curDistance) isDefence = true;
+        //if (value >= curDistance) isDefence = true;
 
         UpdateDistance(-value);
     }    
@@ -372,6 +372,7 @@ public class InGameManager : MonoBehaviour
         curDistance += value;
         if(curDistance <= 0)
         {
+            isDefence = true;
             completeCount++;
             moveViewObject.planetList[0]?.SetDistance(0);
             UpdateMoney(completeMoney + curRollCnt);
@@ -381,6 +382,7 @@ public class InGameManager : MonoBehaviour
         }
         else if(curRollCnt == 0)
         {
+            isDefence = true;
             moveViewObject.planetList[0]?.SetDistance(curDistance);
             OutPlanet();
         }

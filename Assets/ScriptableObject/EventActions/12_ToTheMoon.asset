@@ -17,7 +17,7 @@ MonoBehaviour:
     \uBBFF\uC9C0? \uD654\uC131 \uAC19\uC774 \uAC08\uB044\uB2C8\uAE4C?"
   image: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   choices:
-  - choiceText: "\uC8FC\uC0AC\uC704 6 \uC774\uC0C1"
+  - choiceText: "\uD654\uC131 \uAC00\uBCF4\uC790\uC787~"
     actionType: DiceRoll
     actionParam: 1 6 100
   chanceMult: 2

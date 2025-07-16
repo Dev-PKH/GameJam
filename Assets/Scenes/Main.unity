@@ -2970,7 +2970,7 @@ MonoBehaviour:
   diceButton: {fileID: 1124269305}
   diceFastTimer: 2.5
   diceSlowTimer: 1.5
-  maxSpeed: 18
+  maxSpeed: 20
   minSpeed: 10
 --- !u!1 &713455069
 GameObject:
