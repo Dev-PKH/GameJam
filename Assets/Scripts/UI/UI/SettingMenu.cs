@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public enum SettingOption
 {
-    Gameplay, Graphic, Sound, KeyBindings
+    None ,Gameplay, Graphic, Sound, KeyBindings
 }
 
 public class SettingMenu : UISelector
@@ -33,25 +33,25 @@ public class SettingMenu : UISelector
     public void GameplayButton()
     {
         Debug.Log("게임 플레이 클릭");
-        ChangeView(SettingOption.Gameplay);
+        //ChangeView(SettingOption.Gameplay);
     }
 
     public void GraphicButton()
     {
         Debug.Log("언어");
-        ChangeView(SettingOption.Graphic);
+        //ChangeView(SettingOption.Graphic);
     }
 
     public void SoundButton()
     {
         Debug.Log("사운드");
-        ChangeView(SettingOption.Sound);
+        //ChangeView(SettingOption.Sound);
     }
 
     public void KeyBinidingButton()
     {
         Debug.Log("키바인딩");
-        ChangeView(SettingOption.KeyBindings);
+        //ChangeView(SettingOption.KeyBindings);
     }
 
     public void ChangeView(SettingOption options)
@@ -63,7 +63,8 @@ public class SettingMenu : UISelector
 
     public override void Back()
     {
-		ChangeView(SettingOption.Gameplay);
+        //ChangeView(SettingOption.Gameplay);
+        ChangeView(SettingOption.None);
 		base.Back();
     }
 }

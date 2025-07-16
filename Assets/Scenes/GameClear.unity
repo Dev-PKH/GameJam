@@ -182,8 +182,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uBA54\uC778 \uBA54\uB274 \uB3CC\uC544\uAC00\uAE30"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 92a457e703420124b8bdedbfb9de0255, type: 2}
-  m_sharedMaterial: {fileID: 9055970068211662351, guid: 92a457e703420124b8bdedbfb9de0255, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c1ff65827e80e1d4fb7e90a609f8752a, type: 2}
+  m_sharedMaterial: {fileID: 5183696217446163535, guid: c1ff65827e80e1d4fb7e90a609f8752a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535

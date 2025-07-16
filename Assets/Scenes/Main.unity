@@ -9999,8 +9999,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC774\uB3D9 \uAC15\uD654\n\n\n\n\uD2B9\uC218 \uAC15\uD654"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 92a457e703420124b8bdedbfb9de0255, type: 2}
-  m_sharedMaterial: {fileID: 9055970068211662351, guid: 92a457e703420124b8bdedbfb9de0255, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c1ff65827e80e1d4fb7e90a609f8752a, type: 2}
+  m_sharedMaterial: {fileID: 5183696217446163535, guid: c1ff65827e80e1d4fb7e90a609f8752a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10063,7 +10063,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 154.3205}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1900005103
