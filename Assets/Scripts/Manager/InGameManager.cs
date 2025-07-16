@@ -33,8 +33,8 @@ public class InGameManager : MonoBehaviour
     // 행성 정보
     public GameStatus status;
     public Planet[] planetPrefabs; // 행성 프리펩 종류들
-
     public Planets curPlanetStatus;
+    public SpriteRenderer stopCar;
 
     public int curDistance; // 현재 남은 거리
 
@@ -263,6 +263,7 @@ public class InGameManager : MonoBehaviour
 
         selectView.SetActive(true);
         carRenderer.sprite = eventSprite[4]; // 차 교체
+        stopCar.sprite = eventSprite[4]; // 폐차
         planetRenderer.sprite = outPlanet;
         status = GameStatus.Select;
 
@@ -300,6 +301,7 @@ public class InGameManager : MonoBehaviour
         }
 
         carRenderer.sprite = eventSprite[0]; // 차 교체
+        stopCar.sprite = eventSprite[0];
         //selectView.SetActive(true);
         //StartCoroutine(ChangeSelect());
     }

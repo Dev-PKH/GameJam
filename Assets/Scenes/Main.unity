@@ -2771,6 +2771,7 @@ MonoBehaviour:
   - {fileID: 469263724121275787, guid: 1a863df78409eef4ca76d63d7384a5f5, type: 3}
   - {fileID: 4143064457701014575, guid: 80ca0df995df59d47a714cc5958317b1, type: 3}
   curPlanetStatus: 0
+  stopCar: {fileID: 432564325}
   curDistance: 0
   stepDistance: 0
   completeCount: 0
