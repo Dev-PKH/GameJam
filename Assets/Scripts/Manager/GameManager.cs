@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (FadeScript.Instance.isFadeCheck) return; // 페이드 중일 땐 일시정지 막기
+
         if (Status != SystemStatus.Lobby) // 메인 메뉴가 아닐 때
         {
             if (Input.GetKeyDown(KeyCode.Escape)) // 정지 버튼을 누를 경우
@@ -106,5 +108,8 @@ public class GameManager : MonoBehaviour
     public void PauseChange(bool status)
     {
         IsPause = status;
+
+        if (IsPause) Time.timeScale = 0;
+        else Time.timeScale = 1;
     }
 }

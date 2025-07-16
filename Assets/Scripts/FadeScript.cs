@@ -24,12 +24,21 @@ public class FadeScript : MonoBehaviour
     public void FadeIn(float duration = 1f)
     {
         StartFade(1f, 0f, duration);
+        isFadeCheck = false;
     }
 
     public void FadeOut(float duration = 1f)
     {
         if (isFadeCheck) return;
+
+        if(GameManager.Instance.IsPause)
+        {
+            UIManager.Instance.TopPaneHide();
+            GameManager.Instance.PauseChange(false);
+        }
+
         isFadeCheck = true;
+        
         StartFade(0f, 1f, duration);
     }
 
@@ -57,6 +66,5 @@ public class FadeScript : MonoBehaviour
 
         fadeImage.color = new Color(color.r, color.g, color.b, to);
         currentFade = null;
-        isFadeCheck = false;
     }
 }
