@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -97,7 +97,7 @@ public class DiceManager : MonoBehaviour
         {
             slowTimer += Time.deltaTime;
             float t = slowTimer / diceSlowTimer;
-            diceSpeed = Mathf.Lerp(startSpeed, 0f, t);
+            diceSpeed = Mathf.SmoothStep(startSpeed, 0f, t);
             yield return null;
         }
 
