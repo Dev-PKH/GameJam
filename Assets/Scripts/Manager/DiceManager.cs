@@ -19,6 +19,7 @@ public class DiceManager : MonoBehaviour
     public float diceTimer { get; private set; }
     public float diceFastTimer = 7f;
     public float diceSlowTimer = 3f;
+    private const float randomTimer = 0.5f;
 
     [Header("다이스 속도")]
     [SerializeField] private float maxSpeed = 7f;
@@ -89,14 +90,15 @@ public class DiceManager : MonoBehaviour
 
     public IEnumerator IDiceRoll()
     {
-        yield return new WaitForSeconds(diceFastTimer);
+        yield return new WaitForSeconds(diceFastTimer + Random.Range(-randomTimer, randomTimer));
 
-        float slowTimer = 0f;
+        float curTimer = 0f;
         float startSpeed = diceSpeed;
-        while (slowTimer < diceSlowTimer)
+        float slowTimer = Random.Range(-randomTimer, randomTimer);
+        while (curTimer < diceSlowTimer + slowTimer)
         {
-            slowTimer += Time.deltaTime;
-            float t = slowTimer / diceSlowTimer;
+            curTimer += Time.deltaTime;
+            float t = curTimer / (diceSlowTimer+ slowTimer);
             diceSpeed = Mathf.SmoothStep(startSpeed, 0f, t);
             yield return null;
         }

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class EventController : MonoBehaviour
 {
@@ -6,22 +6,6 @@ public class EventController : MonoBehaviour
 	[SerializeField] private EventData[] allEvents; // 여러 ScriptableObject들
 
 	int prevIndex = -1;
-	bool isActive = false;
-
-	/*private void Update()
-	{
-		if(Input.GetKeyDown(KeyCode.Alpha0))
-		{
-			TriggerRandomEvent();
-		}
-
-		if(Input.GetKeyDown(KeyCode.Space))
-		{
-			isActive = !isActive;
-			eventManager.gameObject.SetActive(isActive);
-
-        }
-	}*/
 
     // 이번에 올 이벤트의 인덱스를 구함
 	public int FetchEventIndex()

@@ -2972,7 +2972,7 @@ MonoBehaviour:
   diceFastTimer: 2.5
   diceSlowTimer: 1.5
   maxSpeed: 20
-  minSpeed: 10
+  minSpeed: 8
 --- !u!1 &713455069
 GameObject:
   m_ObjectHideFlags: 0
